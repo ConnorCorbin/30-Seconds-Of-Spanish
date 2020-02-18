@@ -6,6 +6,5 @@
   "description": "..",
   "chrome_url_overrides": {
     "newtab": "index.html"
-  },
-  "content_security_policy": "script-src 'self' 'sha256-yuxyoEc3eHRI6MlOpBB1ysNqKRJpRSEJZF+WdC4l1Jk='; object-src 'self'"
+  }
 }
