@@ -3,7 +3,6 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import App from 'components/app/App.js';
 import Header from 'components/header/header.js';
 
 const GlobalStyle = createGlobalStyle`
