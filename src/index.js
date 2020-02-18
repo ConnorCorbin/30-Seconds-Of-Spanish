@@ -3,8 +3,6 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import * as serviceWorker from 'serviceWorker';
-
 import App from 'components/app/App.js';
 import Header from 'components/header/header.js';
 
