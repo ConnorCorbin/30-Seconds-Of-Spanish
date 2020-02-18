@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header component 1`] = `
+<styled.div>
+  <styled.div>
+    <Image
+      altTag="Image alt tag"
+      url="logo.svg"
+    />
+    <styled.div>
+      <styled.span>
+        Title 1
+      </styled.span>
+      <styled.span>
+        Title 2
+      </styled.span>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
