@@ -1,11 +1,19 @@
 {
-  "name": "..",
-  "author": "..",
-  "version": "1.0.1",
+  "name": "30 Seconds of Spanish",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "description": "..",
+  "description": "A plain text description",
+  "icons": {
+    "32": "logo_32.png",
+    "64": "logo_64.png",
+    "128": "logo_128.png",
+    "256": "logo_256.png"
+  },
+  "browser_action": {
+    "default_icon": "logo_32.png"
+  },
+  "author": "Connor Corbin",
   "chrome_url_overrides": {
     "newtab": "index.html"
-  },
-  "content_security_policy": "script-src 'self' 'sha256-yuxyoEc3eHRI6MlOpBB1ysNqKRJpRSEJZF+WdC4l1Jk='; object-src 'self'"
+  }
 }
