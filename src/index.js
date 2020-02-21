@@ -3,15 +3,17 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import App from 'components/app/App.js';
-import Header from 'components/header/header.js';
+import logo from 'common/icons/logo.svg';
+
+import Header from 'components/header/header';
+import MessageBox from 'components/message-box/message-box';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
+    margin: 0;
   }
   
   code {
@@ -23,7 +25,16 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
   <Fragment>
     <GlobalStyle />
-    <Header textColor="" imageUrl='https://via.placeholder.com/150' imageAltTag="This is an alt tag" title1="30 Seconds" title2="of Spanish" />
-    <App />
-  </Fragment>
-, document.getElementById('root'));
+    <Header textColor="" imageUrl={logo} imageAltTag="This is an alt tag" title1="30 Seconds" title2="of Spanish" />
+    <MessageBox
+      correctTitle1="You are correct!"
+      correctText1="Well done keep going!"
+      incorrectTitle1="Correct Solution:"
+      incorrectText1="En el tren."
+      incorrectTitle2="Meaning:"
+      incorrectText2="In the train."
+      isAnswerCorrect={false}
+    />
+  </Fragment>,
+  document.getElementById('root'),
+);

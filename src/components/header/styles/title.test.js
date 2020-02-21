@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StyledTitle from 'components/header/styles/Styled-title';
+import StyledTitle from 'components/header/styles/title';
 
 let wrapper;
 

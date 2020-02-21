@@ -10,14 +10,14 @@ const props = {
 
 it('should render Image component', () => {
   wrapper = shallow(<Image {...props} />);
-  
+
   expect(wrapper.isEmptyRender()).toEqual(false);
   expect(wrapper).toMatchSnapshot();
 });
 
 it('should not render Image component', () => {
   wrapper = shallow(<Image />);
-  
+
   expect(wrapper.isEmptyRender()).toEqual(true);
 });
 

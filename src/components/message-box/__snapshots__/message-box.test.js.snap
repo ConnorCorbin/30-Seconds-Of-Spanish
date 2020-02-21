@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox component Correct answer message box should render MessageBox component 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "correctAnswerBackground": "#b8f28b",
+        "correctAnswerText": "#58a700",
+        "incorrectAnswerBackground": "#ffc1c1",
+        "incorrectAnswerText": "#ea2b2b",
+        "white": "#ffffff",
+      },
+    }
+  }
+>
+  <styled.div
+    isAnswerCorrect={true}
+  >
+    <styled.div>
+      <styled.div>
+        <ForwardRef(SvgTick) />
+      </styled.div>
+      <styled.div
+        isAnswerCorrect={true}
+      >
+        <styled.h2>
+          You are correct!
+        </styled.h2>
+        <styled.span>
+          Well done keep going!
+        </styled.span>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</ThemeProvider>
+`;
+
+exports[`MessageBox component Incorrect answer message box should render MessageBox component 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "correctAnswerBackground": "#b8f28b",
+        "correctAnswerText": "#58a700",
+        "incorrectAnswerBackground": "#ffc1c1",
+        "incorrectAnswerText": "#ea2b2b",
+        "white": "#ffffff",
+      },
+    }
+  }
+>
+  <styled.div
+    isAnswerCorrect={false}
+  >
+    <styled.div>
+      <styled.div>
+        <ForwardRef(SvgCross) />
+      </styled.div>
+      <styled.div
+        isAnswerCorrect={false}
+      >
+        <styled.h2>
+          Correct Solution:
+        </styled.h2>
+        <styled.span>
+          En el tren.
+        </styled.span>
+        <styled.h2>
+          Meaning:
+        </styled.h2>
+        <styled.span>
+          In the train.
+        </styled.span>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</ThemeProvider>
+`;
