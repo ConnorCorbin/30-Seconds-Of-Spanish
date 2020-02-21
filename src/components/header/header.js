@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import logo from 'common/logo/logo.svg';
-
 import Image from 'components/image/image';
 
-import StyledWrapper from 'components/header/styles/styled-wrapper';
-import StyledContentWrapper from 'components/header/styles/styled-content-wrapper';
-import StyledTitle from 'components/header/styles/Styled-title';
-import StyledTextBlock from 'components/header/styles/styled-text-block';
+import StyledWrapper from 'components/header/styles/wrapper';
+import StyledContentWrapper from 'components/header/styles/content-wrapper';
+import StyledTitle from 'components/header/styles/title';
+import StyledTextBlock from 'components/header/styles/text-block';
 
 const Header = ({
   title1,
@@ -18,7 +16,7 @@ const Header = ({
   imageAltTag,
 }) => {
   const getTitle = (titleText) => titleText && (
-    <StyledTitle textColor={textColor} >
+    <StyledTitle textColor={textColor}>
       {titleText}
     </StyledTitle>
   );
@@ -35,7 +33,7 @@ const Header = ({
   return (
     <StyledWrapper>
       <StyledContentWrapper>
-        <Image url={logo} altTag={imageAltTag} />
+        <Image url={imageUrl} altTag={imageAltTag} />
         {getTextBlock()}
       </StyledContentWrapper>
     </StyledWrapper>

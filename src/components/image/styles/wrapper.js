@@ -6,5 +6,5 @@ export default styled.div`
   img {
       display: block;
       width: 100%;
-  };
+  }
 `;

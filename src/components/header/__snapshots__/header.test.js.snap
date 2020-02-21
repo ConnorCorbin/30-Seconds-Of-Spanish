@@ -5,7 +5,7 @@ exports[`should render Header component 1`] = `
   <styled.div>
     <Image
       altTag="Image alt tag"
-      url="logo.svg"
+      url="Image URL"
     />
     <styled.div>
       <styled.span>

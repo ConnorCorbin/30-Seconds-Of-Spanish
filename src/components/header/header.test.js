@@ -2,8 +2,7 @@ import React from 'react';
 
 import Header from 'components/header/header';
 
-import StyledTextBlock from 'components/header/styles/styled-text-block';
-import StyledContentWrapper from 'components/header/styles/styled-content-wrapper';
+import StyledTextBlock from 'components/header/styles/text-block';
 
 let wrapper;
 const getWrapper = ({
@@ -24,14 +23,14 @@ const getWrapper = ({
 
 it('should render Header component', () => {
   wrapper = getWrapper();
-  
+
   expect(wrapper.isEmptyRender()).toEqual(false);
   expect(wrapper).toMatchSnapshot();
 });
 
 it('should not render Header component', () => {
   wrapper = getWrapper({ title1: '' });
-  
+
   expect(wrapper.isEmptyRender()).toEqual(true);
 });
 
