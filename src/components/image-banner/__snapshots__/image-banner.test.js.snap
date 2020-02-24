@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageBanner should render ImageBanner component 1`] = `
+<styled.div>
+  <Image
+    altTag="Image alt tag"
+  />
+</styled.div>
+`;
