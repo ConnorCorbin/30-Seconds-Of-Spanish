@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Image component 1`] = `
+exports[`Image should render Image component 1`] = `
 <styled.div>
   <img
     alt="Image alt tag"

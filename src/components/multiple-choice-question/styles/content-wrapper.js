@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  margin-top: 30px;
   width: 100%;
-
-  img {
-    display: block;
-    width: 100%;
-  }
 `;

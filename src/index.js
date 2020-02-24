@@ -3,37 +3,49 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import logo from 'common/icons/logo.svg';
+import extentionLogo from 'common/icons/30-seconds-of-spanish.png';
 
-import Header from 'components/header/header';
-import MessageBox from 'components/message-box/message-box';
+import ImageBanner from 'components/image-banner/image-banner';
+import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  body, html {
+    background: #fafafa;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
+    height: 100%;
     margin: 0;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+
+    #root {
+      display: flex;
+      flex-direction: column;
+      height: inherit;
+    }
   }
 `;
 
 ReactDOM.render(
   <Fragment>
     <GlobalStyle />
-    <Header textColor="" imageUrl={logo} imageAltTag="This is an alt tag" title1="30 Seconds" title2="of Spanish" />
-    <MessageBox
-      correctTitle1="You are correct!"
-      correctText1="Well done keep going!"
-      incorrectTitle1="Correct Solution:"
-      incorrectText1="En el tren."
-      incorrectTitle2="Meaning:"
-      incorrectText2="In the train."
-      isAnswerCorrect={false}
+    <ImageBanner
+      imageUrl={extentionLogo}
+      imageAltTag="30 Seconds of Spanish logo"
+    />
+    <MultipleChoiceQuestion
+      titleText="Mark the correct meaning"
+      questionText="One, Two, Three!"
+      possibleAnswers={[
+        '¡Uno, dos, tres!',
+        '¡Un, queso, 3',
+        '¡1, sal y 3!',
+      ]}
+      correctAnswer="¡Uno, dos, tres!"
+      buttonText="Check Result"
+      correctResultTitle="Correct Result!"
+      correctResultText="Well Done."
+      incorrectResultTitle="Correct Result:"
+      incorrectResultText=""
     />
   </Fragment>,
   document.getElementById('root'),
