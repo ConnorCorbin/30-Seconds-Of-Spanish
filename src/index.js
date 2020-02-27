@@ -3,10 +3,10 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import extentionLogo from 'common/icons/30-seconds-of-spanish.png';
+import extentionLogo from 'common/constants/icons/30-seconds-of-spanish.png';
+import generateRandomLearningMaterial from 'common/services/generate-random-learning-material';
 
 import ImageBanner from 'components/image-banner/image-banner';
-import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -32,7 +32,7 @@ ReactDOM.render(
       imageUrl={extentionLogo}
       imageAltTag="30 Seconds of Spanish logo"
     />
-    <MultipleChoiceQuestion
+    {/* <MultipleChoiceQuestion
       titleText="Mark the correct meaning"
       questionText="One, Two, Three!"
       possibleAnswers={[
@@ -46,7 +46,10 @@ ReactDOM.render(
       correctResultText="Well Done."
       incorrectResultTitle="Correct Result:"
       incorrectResultText=""
-    />
+    /> */}
+    {/* {React.cloneElement(components[0])} */}
+    {/* {console.log(components[0])} */}
+    {generateRandomLearningMaterial()}
   </Fragment>,
   document.getElementById('root'),
 );

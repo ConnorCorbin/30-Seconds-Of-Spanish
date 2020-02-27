@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import Image from 'components/image/image';
@@ -19,4 +19,4 @@ ImageBanner.propTypes = {
   imageAltTag: PropTypes.string,
 };
 
-export default ImageBanner;
+export default memo(ImageBanner);

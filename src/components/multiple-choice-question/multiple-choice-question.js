@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
-import theme from 'common/theme/theme';
+import theme from 'common/constants/theme/theme';
 
 import ResultBanner from 'components/result-banner/result-banner';
 
