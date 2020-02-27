@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
-import theme from 'common/theme/theme';
-import { ReactComponent as CrossIcon } from 'common/icons/cross.svg';
-import { ReactComponent as TickIcon } from 'common/icons/tick.svg';
+import theme from 'common/constants/theme/theme';
+import { ReactComponent as CrossIcon } from 'common/constants/icons/cross.svg';
+import { ReactComponent as TickIcon } from 'common/constants/icons/tick.svg';
 
 import StyledWrapper from 'components/result-banner/styles/wrapper';
 import StyledButton from 'components/result-banner/styles/button';
