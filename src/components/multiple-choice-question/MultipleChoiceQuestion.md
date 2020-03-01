@@ -1,4 +1,4 @@
-Multiple Choice Question features:
+# Multiple Choice Question features
 
 * Ability to set question title and text.
 * Pass array of possible answers consumer can pick.

@@ -1,4 +1,4 @@
-Image features:
+# Image features
 
 * Renders Image
 

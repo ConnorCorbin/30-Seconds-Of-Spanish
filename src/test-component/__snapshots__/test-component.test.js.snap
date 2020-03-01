@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestComponent should not render TestComponent when componentName is empty 1`] = `""`;
+
+exports[`TestComponent should render TestComponent component 1`] = `
+<Image
+  altTag="30 Seconds of Spanish"
+  url="30-seconds-of-spanish.png"
+/>
+`;

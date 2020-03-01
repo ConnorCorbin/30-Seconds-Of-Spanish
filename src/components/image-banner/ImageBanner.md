@@ -1,4 +1,4 @@
-ImageBanner features:
+# ImageBanner features
 
 * Renders Image banner with passed in image URL.
 
