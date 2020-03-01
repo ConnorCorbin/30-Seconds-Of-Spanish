@@ -2,24 +2,32 @@
   "name": "30-seconds-of-spanish",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.4.0",
-    "styled-components": "^5.0.1"
-  },
   "scripts": {
-    "start": "react-scripts start",
+    "audit": "npm-audit-ci-wrapper --threshold=high",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "lint": "stylelint './src/**/*.js' && eslint './src/**/*.js'"
+    "lint:css": "stylelint './src/**/*.js'",
+    "lint:js": "eslint --ext .jsx,.js src/ && eslint --ext .jsx,.js backstop_data/",
+    "lint:md": "markdownlint --config markdownlint.json './src/**/*.md'",
+    "lint": "npm-run-all lint:css lint:js lint:md",
+    "start": "react-scripts start",
+    "test": "react-scripts test --watchAll=false",
+    "visual:320_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-320_size.js",
+    "visual:720_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-720_size.js",
+    "visual:1020_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-1020_size.js",
+    "visual:1400_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-1400_size.js",
+    "visual": "npm-run-all -c visual:1400_size visual:1020_size visual:720_size visual:320_size",
+    "visual:1400_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-1400_size.js",
+    "visual:1020_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-1020_size.js",
+    "visual:720_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-720_size.js",
+    "visual:320_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-320_size.js",
+    "visual:approve": "npm-run-all -c visual:1400_size:approve visual:1020_size:approve visual:720_size:approve visual:320_size:approve"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run lint",
+      "pre-push": "npm run audit && npm run lint && npm run test && npm run build"
+    }
   },
   "browserslist": {
     "production": [
@@ -33,11 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test && npm run lint",
-      "pre-push": "npm run test && npm run lint && npm run build"
-    }
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "jest": {
     "coverageThreshold": {
@@ -53,6 +58,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "backstopjs": "^3.9.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.4.4",
@@ -61,7 +70,15 @@
     "eslint-plugin-security": "^1.4.0",
     "husky": "^4.2.3",
     "jest-styled-components": "^7.0.0",
+    "markdownlint": "^0.19.0",
+    "markdownlint-cli": "^0.22.0",
+    "npm-audit-ci-wrapper": "^2.4.3",
+    "npm-run-all": "^4.1.5",
     "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.4.0",
+    "styled-components": "^5.0.1",
     "stylelint": "^13.2.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",

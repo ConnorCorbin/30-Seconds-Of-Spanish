@@ -1,0 +1,14 @@
+# backstop
+backstop_data/engine_scripts
+backstop_data/bitmaps_reference_320_size
+backstop_data/bitmaps_reference_720_size
+backstop_data/bitmaps_reference_1020_size
+backstop_data/bitmaps_reference_1400_size
+backstop_data/bitmaps_test_320_size
+backstop_data/bitmaps_test_720_size
+backstop_data/bitmaps_test_1020_size
+backstop_data/bitmaps_test_1400_size
+backstop_data/html_report_320_size
+backstop_data/html_report_720_size
+backstop_data/html_report_1020_size
+backstop_data/html_report_1400_size

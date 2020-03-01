@@ -1,4 +1,4 @@
-Result Banner features:
+# Result Banner features
 
 * Renders one of three types of result banner: correct, incorrect and undecided.
 * Displays appropriate title and text for correct and incorrect result banner.
