@@ -2,24 +2,35 @@ module.exports = [{
   label: 'Image',
   url: 'http://localhost:3000/?component=Image',
   selectors: ['#root'],
+  misMatchThreshold: 0,
 }, {
   label: 'ImageBanner',
   url: 'http://localhost:3000/?component=ImageBanner',
   selectors: ['#root'],
+  misMatchThreshold: 0,
 }, {
   label: 'MultipleChoiceQuestion',
   url: 'http://localhost:3000/?component=MultipleChoiceQuestion',
   selectors: ['#root'],
+  misMatchThreshold: 0,
 }, {
   label: 'ResultBanner-1',
   url: 'http://localhost:3000/?component=ResultBanner-1',
   selectors: ['#root'],
+  misMatchThreshold: 0,
 }, {
   label: 'ResultBanner-2',
   url: 'http://localhost:3000/?component=ResultBanner-2',
   selectors: ['#root'],
+  misMatchThreshold: 0,
 }, {
   label: 'ResultBanner-3',
   url: 'http://localhost:3000/?component=ResultBanner-3',
   selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'TextInput',
+  url: 'http://localhost:3000/?component=TextInput',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
 }];
