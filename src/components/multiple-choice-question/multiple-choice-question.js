@@ -5,10 +5,9 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'common/constants/theme/theme';
 
 import ResultBanner from 'components/result-banner/result-banner';
+import QuestionHeader from 'components/question-header/challenge-header';
 
 import StyledWrapper from 'components/multiple-choice-question/styles/wrapper';
-import StyledTitleText from 'components/multiple-choice-question/styles/title-text';
-import StyledQuestionText from 'components/multiple-choice-question/styles/question-text';
 import StyledLabel from 'components/multiple-choice-question/styles/label';
 import StyledContentWrapper from 'components/multiple-choice-question/styles/content-wrapper';
 import StyledFooter from 'components/multiple-choice-question/styles/footer';
@@ -31,27 +30,15 @@ class MultipleChoiceQuestion extends Component {
 
   getUniqueID = string => string.replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-');
 
-  getTitleText = () => {
-    const { titleText } = this.props;
+  getQuestionHeader = () => {
+    const { questionTitle, questionText } = this.props;
 
-    if (!titleText) return null;
-
+    if (!questionTitle && !questionText) return null;
     return (
-      <StyledTitleText>
-        {titleText}
-      </StyledTitleText>
-    );
-  };
-
-  getQuestionText = () => {
-    const { questionText } = this.props;
-
-    if (!questionText) return null;
-
-    return (
-      <StyledQuestionText>
-        {questionText}
-      </StyledQuestionText>
+      <QuestionHeader
+        questionTitle={questionTitle}
+        questionText={questionText}
+      />
     );
   };
 
@@ -153,8 +140,7 @@ class MultipleChoiceQuestion extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyledWrapper>
-          {this.getTitleText()}
-          {this.getQuestionText()}
+          {this.getQuestionHeader()}
           {this.getPossibleAnswers(possibleAnswers)}
         </StyledWrapper>
         {this.getCorrectResultBanner()}
@@ -169,10 +155,11 @@ MultipleChoiceQuestion.defaultProps = {
 
 MultipleChoiceQuestion.propTypes = {
   // MultipleChoiceQuestion
-  titleText: PropTypes.string,
-  questionText: PropTypes.string,
   possibleAnswers: PropTypes.arrayOf(PropTypes.shape),
   correctAnswer: PropTypes.string,
+  // ChallengeHeader
+  questionTitle: PropTypes.string,
+  questionText: PropTypes.string,
   // ResultBanner
   buttonText: PropTypes.string,
   correctResultTitle: PropTypes.string,

@@ -33,4 +33,9 @@ module.exports = [{
   url: 'http://localhost:3000/?component=TextInput',
   selectors: ['#root'],
   misMatchThreshold: 0,
+}, {
+  label: 'ChallengeHeader',
+  url: 'http://localhost:3000/?component=ChallengeHeader',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
 }];
