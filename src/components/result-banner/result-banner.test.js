@@ -4,6 +4,7 @@ import { ReactComponent as CrossIcon } from 'common/constants/icons/cross.svg';
 import { ReactComponent as TickIcon } from 'common/constants/icons/tick.svg';
 
 import ResultBanner from 'components/result-banner/result-banner';
+
 import StyledTitle from 'components/result-banner/styles/title';
 import StyledTitleText from 'components/result-banner/styles/title-text';
 import StyledButton from 'components/result-banner/styles/button';

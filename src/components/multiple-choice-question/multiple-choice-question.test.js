@@ -1,16 +1,16 @@
 import React from 'react';
 
 import ResultBanner from 'components/result-banner/result-banner';
+import ChallengeHeader from 'components/question-header/challenge-header';
+
 import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
-import StyledTitleText from 'components/multiple-choice-question/styles/title-text';
-import StyledQuestionText from 'components/multiple-choice-question/styles/question-text';
 import StyledLabel from 'components/multiple-choice-question/styles/label';
 import StyledButton from 'components/result-banner/styles/button';
 
 describe('MultipleChoiceQuestion', () => {
   let wrapper;
   const getWrapper = ({
-    titleText = 'Mark the correct meaning',
+    questionTitle = 'Mark the correct meaning',
     questionText = 'One, Two, Three!',
     possibleAnswers = [
       '¡Uno, dos, tres!',
@@ -25,7 +25,7 @@ describe('MultipleChoiceQuestion', () => {
     incorrectResultText,
   } = {}) => shallow(
     <MultipleChoiceQuestion
-      titleText={titleText}
+      questionTitle={questionTitle}
       questionText={questionText}
       possibleAnswers={possibleAnswers}
       correctAnswer={correctAnswer}
@@ -51,31 +51,17 @@ describe('MultipleChoiceQuestion', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  describe('StyledTitleText', () => {
-    it('should render correct titleText', () => {
+  describe('ChallengeHeader', () => {
+    it('should render ChallengeHeader component when question title and text is passed', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.find(StyledTitleText).children().text()).toEqual('Mark the correct meaning');
+      expect(wrapper.find(ChallengeHeader).exists()).toEqual(true);
     });
 
-    it('should not render MultipleChoiceQuestion component when no titleText is passed in', () => {
-      wrapper = getWrapper({ titleText: '' });
+    it('should not render ChallengeHeader component when no question title and text is passed', () => {
+      wrapper = getWrapper({ questionTitle: '', questionText: '' });
 
-      expect(wrapper.find(StyledTitleText).exists()).toEqual(false);
-    });
-  });
-
-  describe('StyledQuestionText', () => {
-    it('should render correct questionText', () => {
-      wrapper = getWrapper();
-
-      expect(wrapper.find(StyledQuestionText).children().text()).toEqual('One, Two, Three!');
-    });
-
-    it('should not render StyledTitleText when no questionText is passed in', () => {
-      wrapper = getWrapper({ questionText: '' });
-
-      expect(wrapper.find(StyledQuestionText).exists()).toEqual(false);
+      expect(wrapper.find(ChallengeHeader).exists()).toEqual(false);
     });
   });
 

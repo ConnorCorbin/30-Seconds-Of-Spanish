@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TextInput from 'components/text-input/text-input';
+
 import StyledTextInput from 'components/text-input/styles/text-area';
 
 describe('TextInput', () => {

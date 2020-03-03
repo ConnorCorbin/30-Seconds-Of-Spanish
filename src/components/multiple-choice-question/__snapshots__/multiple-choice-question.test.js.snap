@@ -23,12 +23,10 @@ exports[`MultipleChoiceQuestion should render MultipleChoiceQuestion component 1
   }
 >
   <styled.div>
-    <styled.h1>
-      Mark the correct meaning
-    </styled.h1>
-    <styled.span>
-      One, Two, Three!
-    </styled.span>
+    <QuestionHeader
+      questionText="One, Two, Three!"
+      questionTitle="Mark the correct meaning"
+    />
     <styled.div>
       <styled.span
         isActive={false}
