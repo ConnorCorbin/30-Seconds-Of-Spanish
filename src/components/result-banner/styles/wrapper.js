@@ -10,6 +10,7 @@ const getAdditionalStyles = ({ bannerType }) => bannerType === 'undecided' && `
 const baseStyles = css`
   background-color: ${getBackgroundColor};
   display: flex;
+  font-family: inherit;
   height: 140px;
   user-select: none;
   width: 100%;
