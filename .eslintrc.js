@@ -3,11 +3,15 @@ module.exports = {
   "plugins": [
     "jest",
     "security",
+    "react-hooks",
+    "jsx-a11y",
   ],
   "extends": [
+    "react-app",
     "airbnb",
     "plugin:jest/recommended",
     "plugin:security/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   "rules": {
     "consistent-return": "off",
@@ -25,6 +29,13 @@ module.exports = {
     "security/detect-object-injection": "off",
     "react/destructuring-assignment": ["off"],
     "react/no-array-index-key": "off",
+    "max-len": ['error', 120, 2, {
+      ignoreUrls: true,
+      ignoreComments: false,
+      ignoreRegExpLiterals: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+    }],
   },
   "env": {
     "jest/globals": true,

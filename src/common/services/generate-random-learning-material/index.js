@@ -1,4 +1,4 @@
-import learningMaterial from 'common/constants/learning-material';
+import learningMaterial from 'common/learning-material';
 
 export default () => {
   const totalNumberOfQuestions = learningMaterial.length;

@@ -1,13 +1,12 @@
 import React from 'react';
 
 import ResultBanner from 'components/result-banner/result-banner';
-import ChallengeHeader from 'components/question-header/challenge-header';
-
+import ChallengeHeader from 'components/challenge-header/challenge-header';
 import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
 import StyledLabel from 'components/multiple-choice-question/styles/label';
 import StyledButton from 'components/result-banner/styles/button';
 
-describe('MultipleChoiceQuestion', () => {
+describe('MultipleChoiceQuestion component', () => {
   let wrapper;
   const getWrapper = ({
     questionTitle = 'Mark the correct meaning',
@@ -40,18 +39,18 @@ describe('MultipleChoiceQuestion', () => {
   it('should render MultipleChoiceQuestion component', () => {
     wrapper = getWrapper();
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(false);
-    expect(wrapper).toMatchSnapshot();
   });
 
-  it('should not render MultipleChoiceQuestion component when no possibleAnswers is passed in', () => {
-    wrapper = shallow(<MultipleChoiceQuestion />);
+  it('should not render MultipleChoiceQuestion component', () => {
+    wrapper = getWrapper({ possibleAnswers: [] });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
-    expect(wrapper).toMatchSnapshot();
   });
 
-  describe('ChallengeHeader', () => {
+  describe('ChallengeHeader component', () => {
     it('should render ChallengeHeader component when question title and text is passed', () => {
       wrapper = getWrapper();
 
@@ -106,16 +105,16 @@ describe('MultipleChoiceQuestion', () => {
     it('should render MultipleChoiceQuestion with correct initial state', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.state('activeLabelIndex')).toEqual(-1);
+      expect(wrapper.state('activeLabelIndex')).toEqual(9999);
       expect(wrapper.state('isLabelActive')).toEqual(false);
-      expect(wrapper.state('isCorrectAnswer')).toEqual('undecided');
+      expect(wrapper.state('answerStatus')).toEqual('undecided');
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
     });
 
     it('should update activeLabelIndex and isLabelActive when label is clicked', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.state('activeLabelIndex')).toEqual(-1);
+      expect(wrapper.state('activeLabelIndex')).toEqual(9999);
       expect(wrapper.state('isLabelActive')).toEqual(false);
       wrapper.find(StyledLabel).at(0).simulate('click');
       expect(wrapper.state('activeLabelIndex')).toEqual(0);
@@ -125,7 +124,7 @@ describe('MultipleChoiceQuestion', () => {
     it('should not update activeLabelIndex and isLabelActive when active label is clicked', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.state('activeLabelIndex')).toEqual(-1);
+      expect(wrapper.state('activeLabelIndex')).toEqual(9999);
       expect(wrapper.state('isLabelActive')).toEqual(false);
 
       wrapper.find(StyledLabel).at(0).simulate('click');

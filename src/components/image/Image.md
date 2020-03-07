@@ -1,4 +1,6 @@
-# Image features
+# Image component
+
+Image features:
 
 * Renders Image
 

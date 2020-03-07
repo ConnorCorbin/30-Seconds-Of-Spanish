@@ -2,35 +2,43 @@ import React from 'react';
 
 import Image from 'components/image/image';
 
-describe('Image', () => {
+import StyledImage from 'components/image/styles/image';
+
+describe('Image component', () => {
   let wrapper;
-  const props = {
-    url: 'Image URL',
-    altTag: 'Image alt tag',
-  };
+  const getWrapper = ({
+    url = 'Image URL',
+    altTag = 'Image alt tag',
+  } = {}) => shallow(
+    <Image
+      url={url}
+      altTag={altTag}
+    />,
+  );
 
   it('should render Image component', () => {
-    wrapper = shallow(<Image {...props} />);
+    wrapper = getWrapper();
 
-    expect(wrapper.isEmptyRender()).toEqual(false);
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
   it('should not render Image component', () => {
-    wrapper = shallow(<Image />);
+    wrapper = getWrapper({ url: '' });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
   it('should render Image component with correct image URL', () => {
-    wrapper = shallow(<Image {...props} />);
+    wrapper = getWrapper();
 
-    expect(wrapper.find('img').at(0).props().src).toEqual(props.url);
+    expect(wrapper.find(StyledImage).props().src).toEqual('Image URL');
   });
 
   it('should render Image component with correct image alt tag', () => {
-    wrapper = shallow(<Image {...props} />);
+    wrapper = getWrapper();
 
-    expect(wrapper.find('img').at(0).props().alt).toEqual(props.altTag);
+    expect(wrapper.find(StyledImage).props().alt).toEqual('Image alt tag');
   });
 });

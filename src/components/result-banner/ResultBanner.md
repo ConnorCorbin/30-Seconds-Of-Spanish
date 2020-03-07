@@ -1,8 +1,9 @@
-# Result Banner features
+# Result Banner component
 
-* Renders one of three types of result banner: correct, incorrect and undecided.
-* Displays appropriate title and text for correct and incorrect result banner.
-* Undecided result banner displays button which by default is inactive.
+ResultBanner features:
+
+* Renders undecided, correct and incorrect Result Banner based on answer status
+* Displayes appropriate Title dependng on Result Banner rendered
 
 Consumed components:
 

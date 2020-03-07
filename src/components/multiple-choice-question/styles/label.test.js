@@ -38,7 +38,6 @@ describe('StyledLabel', () => {
     });
   });
 
-
   describe('Background color', () => {
     it('should render StyledLabel with correct background color when isActive is true', () => {
       wrapper = shallow(<StyledLabel theme={theme} isActive />);

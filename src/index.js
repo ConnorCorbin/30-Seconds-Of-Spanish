@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import extentionLogo from 'common/constants/icons/30-seconds-of-spanish.png';
+import logo from 'common/icons/logo.png';
 import generateRandomLearningMaterial from 'common/services/generate-random-learning-material';
 
 import ImageBanner from 'components/image-banner/image-banner';
@@ -34,7 +34,7 @@ ReactDOM.render(
     <GlobalStyle />
     <TestComponent componentName={componentName} />
     <ImageBanner
-      imageUrl={extentionLogo}
+      imageUrl={logo}
       imageAltTag="30 Seconds of Spanish logo"
     />
     {generateRandomLearningMaterial()}
