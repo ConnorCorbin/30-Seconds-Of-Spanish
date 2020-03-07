@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getResultBanner service should return correct ResultBanner with correct props when answerStatus is correct 1`] = `
+exports[`GetResultBanner service should return correct ResultBanner with correct props when answerStatus is correct 1`] = `
 <UNDEFINED
   bannerType="correct"
   correctResultText="Correct result text"
@@ -9,7 +9,7 @@ exports[`getResultBanner service should return correct ResultBanner with correct
 />
 `;
 
-exports[`getResultBanner service should return incorrect ResultBanner with correct props when answerStatus is incorrect 1`] = `
+exports[`GetResultBanner service should return incorrect ResultBanner with correct props when answerStatus is incorrect 1`] = `
 <UNDEFINED
   bannerType="incorrect"
   incorrectResultText="Incorrect result text"
@@ -18,7 +18,7 @@ exports[`getResultBanner service should return incorrect ResultBanner with corre
 />
 `;
 
-exports[`getResultBanner service should return undecided ResultBanner with correct props when answerStatus is undecided 1`] = `
+exports[`GetResultBanner service should return undecided ResultBanner with correct props when answerStatus is undecided 1`] = `
 <UNDEFINED
   bannerType="undecided"
   buttonText="Button text"
