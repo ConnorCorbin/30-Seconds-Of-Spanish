@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getChallengeHeader service should not return ChallengeHeader component when no parameters are passed in 1`] = `null`;
+
+exports[`getChallengeHeader service should return ChallengeHeader component with correct props 1`] = `
+<UNDEFINED
+  questionText="Question text"
+  questionTitle="Question title"
+/>
+`;

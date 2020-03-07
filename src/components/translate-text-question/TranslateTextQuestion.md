@@ -1,0 +1,26 @@
+# Translate Text Question component
+
+Translate Text Question features:
+
+* Renders Translate text question component
+* Question can be English to Spansish translation or Spanish to English translation
+
+Consumed components:
+
+* TranslateTextQuestion
+* ChallengeHeader
+* ResultBanner
+
+## Data Model
+
+| Configurable Fields | Type | Component | Default | Description |
+| ------------------- | ---- | --------- | ------- | ----------- |
+| correctAnswer | `string` | MultipleChoiceQuestion | | The correct answer for the question |
+| typedInLanguage | `string` | MultipleChoiceQuestion | | Value used for `lang` textarea attribute. Restricted values: `spanish`, `english` |
+| questionTitle | `string` | ChallengeHeader | | Title of the question |
+| questionText | `string` | ChallengeHeader | | text containing the question |
+| buttonText | `string` | ResultBanner | | Text for undecided result banner button |
+| correctResultTitle | `string` | ResultBanner | | Correct answer title for correct result banner |
+| correctResultText | `string` | ResultBanner | | Correct answer text for correct result banner |
+| incorrectResultTitle | `string` | ResultBanner | | Incorrect answer title for incorrect result banner |
+| incorrectResultText | `string` | ResultBanner | | Incorrect answer text for incorrect result banner |

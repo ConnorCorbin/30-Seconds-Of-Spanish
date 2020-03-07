@@ -1,6 +1,8 @@
-# ImageBanner features
+# Image Banner component
 
-* Renders Image banner with passed in image URL.
+Image Banner features:
+
+* Renders banner with image in center
 
 Consumed components:
 

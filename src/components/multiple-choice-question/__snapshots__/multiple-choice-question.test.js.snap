@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MultipleChoiceQuestion should not render MultipleChoiceQuestion component when no possibleAnswers is passed in 1`] = `""`;
+exports[`MultipleChoiceQuestion component should not render MultipleChoiceQuestion component 1`] = `""`;
 
-exports[`MultipleChoiceQuestion should render MultipleChoiceQuestion component 1`] = `
+exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion component 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -23,44 +23,40 @@ exports[`MultipleChoiceQuestion should render MultipleChoiceQuestion component 1
   }
 >
   <styled.div>
-    <QuestionHeader
+    <Memo(ChallengeHeader)
       questionText="One, Two, Three!"
       questionTitle="Mark the correct meaning"
     />
-    <styled.div>
-      <styled.span
-        isActive={false}
-        isAnswerSubmitted={false}
-        key="Uno-dos-tres0"
-        onClick={[Function]}
-      >
-        ¡Uno, dos, tres!
-      </styled.span>
-      <styled.span
-        isActive={false}
-        isAnswerSubmitted={false}
-        key="Un-queso-31"
-        onClick={[Function]}
-      >
-        ¡Un, queso, 3
-      </styled.span>
-      <styled.span
-        isActive={false}
-        isAnswerSubmitted={false}
-        key="1-sal-y-32"
-        onClick={[Function]}
-      >
-        ¡1, sal y 3!
-      </styled.span>
-    </styled.div>
-  </styled.div>
-  <styled.div>
-    <ResultBanner
-      bannerType="undecided"
-      buttonText="Check Result"
+    <styled.span
       isActive={false}
-      onClickFunction={[Function]}
-    />
+      isAnswerSubmitted={false}
+      key="Uno-dos-tres0"
+      onClick={[Function]}
+    >
+      ¡Uno, dos, tres!
+    </styled.span>
+    <styled.span
+      isActive={false}
+      isAnswerSubmitted={false}
+      key="Un-queso-31"
+      onClick={[Function]}
+    >
+      ¡Un, queso, 3
+    </styled.span>
+    <styled.span
+      isActive={false}
+      isAnswerSubmitted={false}
+      key="1-sal-y-32"
+      onClick={[Function]}
+    >
+      ¡1, sal y 3!
+    </styled.span>
   </styled.div>
+  <Memo(ResultBanner)
+    bannerType="undecided"
+    buttonText="Check Result"
+    isActive={false}
+    onClickFunction={[Function]}
+  />
 </ThemeProvider>
 `;

@@ -29,13 +29,23 @@ module.exports = [{
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
-  label: 'TextInput',
-  url: 'http://localhost:3000/?component=TextInput',
+  label: 'TextArea-1',
+  url: 'http://localhost:3000/?component=TextArea-1',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'TextArea-2',
+  url: 'http://localhost:3000/?component=TextArea-2',
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
   label: 'ChallengeHeader',
   url: 'http://localhost:3000/?component=ChallengeHeader',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'TranslateTextQuestion',
+  url: 'http://localhost:3000/?component=TranslateTextQuestion',
   selectors: ['#root'],
   misMatchThreshold: 0,
 }];

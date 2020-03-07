@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResultBanner Should render correct banner type 1`] = `
+exports[`ResultBanner component Should render correct banner type 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -38,7 +38,7 @@ exports[`ResultBanner Should render correct banner type 1`] = `
 </ThemeProvider>
 `;
 
-exports[`ResultBanner Should render incorrect banner type 1`] = `
+exports[`ResultBanner component Should render incorrect banner type 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -76,7 +76,7 @@ exports[`ResultBanner Should render incorrect banner type 1`] = `
 </ThemeProvider>
 `;
 
-exports[`ResultBanner Should render undecided banner type 1`] = `
+exports[`ResultBanner component Should render undecided banner type 1`] = `
 <ThemeProvider
   theme={
     Object {

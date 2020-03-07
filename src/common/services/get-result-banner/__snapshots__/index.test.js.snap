@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getResultBanner service should return correct ResultBanner with correct props when answerStatus is correct 1`] = `
+<UNDEFINED
+  bannerType="correct"
+  correctResultText="Correct result text"
+  correctResultTitle="Correct result title"
+  isAnswerCorrect={true}
+/>
+`;
+
+exports[`getResultBanner service should return incorrect ResultBanner with correct props when answerStatus is incorrect 1`] = `
+<UNDEFINED
+  bannerType="incorrect"
+  incorrectResultText="Incorrect result text"
+  incorrectResultTitle="Incorrect title title"
+  isAnswerCorrect={false}
+/>
+`;
+
+exports[`getResultBanner service should return undecided ResultBanner with correct props when answerStatus is undecided 1`] = `
+<UNDEFINED
+  bannerType="undecided"
+  buttonText="Button text"
+  isActive={true}
+  onClickFunction={[Function]}
+/>
+`;
