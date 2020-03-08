@@ -8,7 +8,7 @@
 
 ------
 
-## Description
+## [Description](#description)
 
 Learn **Spanish** every time you open a **New Tab**! All you need is **30 seconds** of less, to read, understand and complete a range of randomly generated interactive learning material.
 
@@ -16,8 +16,7 @@ This Chrome Extension is built with **React** and **StyledComponents** API.
 
 ------
 
-## [Instructions to install locally on Chrome Web Browser](#instructions)
-
+## [Instructions to install locally on Chrome Web Browser](#install-locally)
 
 1. Clone repository
 
@@ -25,7 +24,7 @@ This Chrome Extension is built with **React** and **StyledComponents** API.
 git clone https://github.com/ConnorCorbin/30-Seconds-Of-Spanish.git
 ```
 
-2. install dependencies
+2. Install dependencies
 
 ```
 npm install
@@ -43,17 +42,19 @@ npm run build
 chrome://extensions
 ```
 
-5. Enable developer mode by clicking the toggle switch next to **developer mode**.
+5. Enable developer mode by clicking the toggle switch next to **developer mode**
 
-6. Load unpacked extension by selecting the **build** folder in the project folder
+6. Load unpacked extension by selecting the **build** folder in the cloned repositoy
 
-7. SUCCESS!
+7. :tada: Success! Web extension should successfully be installed locally :tada:
 
 ------
 
-## [Steps to create new components and release them](#start)
+## [Steps to create and release a new component](#start)
 
-1. Create a folder for the new component inside the `/components/` folder. For example, for a new component called `banana-banner`, we need to create a folder called `banana-banner`, with `kebab-case` naming convention. Inside the `/components/` folder we need to add a `banana-banner.js` file and a `styles` folder with styled-components.
+1. Create a folder for the new component inside the `/components/` folder. For example, for a new component called `banana-banner`, a folder called `banana-banner` will be created. Inside this newly created folder, a main JavaScript file containing the component logic will be created called `banana-banner.js`, additionally, a `/styles/` folder will be created to contain styled-components.
+
+The current folder structure will look like the following:
 
   ```javascript
   src/
@@ -65,7 +66,7 @@ chrome://extensions
   ---banana-banner.js
   ```
 
-2. Next, a config folder should created with a `index.js` file in. This will export an object containing a mock implementation of the component, with accurate prop values. This is required for component visual screenshot testing. Below is an example if only one component config is required. 
+2. After the component logic and styled-components have been created, a `/config/` folder should be created containing a single file called `index.js`. This will export an object containing mock implementation(s) of the component, with accurate prop values. This is required for component visual screenshot testing. Below is an example if only one component configuration is required.
 
   ```javascript
   import BananaBanner from 'components/banana-banner/banana-banner';
@@ -75,7 +76,7 @@ chrome://extensions
   };
   ```
 
-  If two component configs are required, the config file will look like the following:
+  If two or more component configurations are required, the config file will looking like the following:
 
   ```javascript
   import BananaBanner from 'components/banana-banner/banana-banner';
@@ -86,7 +87,7 @@ chrome://extensions
   };
   ```
 
-  Additionally, the config file will need to be added into the `component-configs` folder which is located relative to the `src` folder. An example how this is done is below.
+  Additionally, the config file will need to be added into the `component-configs` file which is located in the `src/` folder. An example of how this would look is below:
 
   ```javascript
   import appleBannerConfigs from 'components/apple-banner/config';
@@ -98,11 +99,11 @@ chrome://extensions
   };
   ```
 
-4. Besides from implementation code, there is also a few other files that need to be created:
+3. Besides from the main JavaScript file containing the implementation code, there exists a couple of other files which must be created. These are:
   - Readme file with component documentation
-  - Test file containing unit tests
+  - Test file(s) containing the unit tests
 
-  The finished folder structure of the completed component will look like the following:
+  The finished folder structure of the component will look like the following:
 
   ```javascript
   src/
@@ -113,14 +114,15 @@ chrome://extensions
   ---styles/
   ----banana.js
   ----banana-wrapper.js
+  ----banana-wrapper.test.js
   ---banana-banner.js
   ---banana-banner.test.js
   ---BananaBanner.md
   ```
 
-  Note the naming convention of the files. Files that contain implementation code (js, unit tests, styles) use lower case `kebab-case` naming convention and the `md` files use the `UpperCaseCamelCase` naming convention.
+  Note the naming convention of the files. Files that contain the implementation code (js, unit tests and styles) use lower case `kebab-case` naming convention and the `md` file uses the upper case `CamelCase` naming convention.
 
-7. Next, visual screenshot testing must be ran. For this, scenarios must be added to in the `/backstop_data/scenarios/` folder/ file. with the `banana-banner` component created above, with two configs, this would look like the following:
+4. Next, component visual screenshot testing must be ran. For this, scenarios must be added in the `/backstop_data/scenarios/` folder/file. With the `banana-banner` component created above and two configurations, this would look like the following:
 
   ```javascript
   module.exports = [{
@@ -153,10 +155,10 @@ chrome://extensions
   npm run visual:approve
   ```
 
-5. When the component is finished, it is time to build the react web extension. This done by running the following script.
+5. Finally, it is time to build the react web extension. This is done by running the following command:
 
   ```javascript
   npm run build
   ```
 
-  Now you can find generated build in the `/build` folder.
+  You can now find generated build in the `/build` folder.
