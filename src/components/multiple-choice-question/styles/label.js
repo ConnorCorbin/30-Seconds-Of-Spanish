@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import media from 'common/services/dimensions-service';
+
 const getTextColor = ({ theme }) => theme.colors.slate;
 
 const getPointerEvents = ({ isAnswerSubmitted }) => isAnswerSubmitted && 'pointer-events: none;';
@@ -35,7 +37,7 @@ const baseStyles = css`
   color: ${getTextColor};
   display: flex;
   font-size: 16px;
-  height: 54px;
+  height: 36px;
   justify-content: center;
   margin: 10px 0;
   max-width: 100%;
@@ -46,4 +48,7 @@ export default styled.span`
   ${baseStyles}
   ${getPointerEvents}
   ${getHoverStyles}
+  ${media.LARGE`
+    height: 40px;
+  `}
 `;

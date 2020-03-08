@@ -7,11 +7,14 @@ const getAdditionalStyles = ({ bannerType }) => bannerType === 'undecided' && `
   align-items: center;
 `;
 
+const getCorrectCursor = ({ bannerType }) => bannerType !== 'undecided' && 'cursor: default;';
+
 const baseStyles = css`
   background-color: ${getBackgroundColor};
   display: flex;
   font-family: inherit;
-  height: 140px;
+  margin-top: 30px;
+  min-height: 140px;
   user-select: none;
   width: 100%;
 `;
@@ -19,4 +22,5 @@ const baseStyles = css`
 export default styled.div`
   ${baseStyles}
   ${getAdditionalStyles}
+  ${getCorrectCursor}
 `;

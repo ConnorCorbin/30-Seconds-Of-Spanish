@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MEDIA_DEFAULTS } from 'common/services/dimensions-service';
+
 import StyledLabel from 'components/multiple-choice-question/styles/label';
 
 describe('StyledLabel', () => {
@@ -87,6 +89,22 @@ describe('StyledLabel', () => {
       wrapper = shallow(<StyledLabel theme={theme} isActive={false} />);
 
       expect(wrapper).toHaveStyleRule('border', `2px solid ${theme.colors.darkGray}`);
+    });
+  });
+
+  describe('Height', () => {
+    it('should render StyledLabel with correct height', () => {
+      wrapper = shallow(<StyledLabel theme={theme} />);
+
+      expect(wrapper).toHaveStyleRule('height', '36px');
+    });
+
+    it('should render StyledLabel with correct height for LARGE breakpoint', () => {
+      wrapper = shallow(<StyledLabel theme={theme} />);
+
+      expect(wrapper).toHaveStyleRule('height', '40px', {
+        media: `(min-width:${MEDIA_DEFAULTS.LARGE}em)`,
+      });
     });
   });
 });
