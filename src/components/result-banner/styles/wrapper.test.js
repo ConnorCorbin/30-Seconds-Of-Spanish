@@ -20,7 +20,23 @@ describe('StyledWrapper', () => {
     });
   });
 
-  describe('StyledWrapper - additional styles', () => {
+  describe('Cursor', () => {
+    ['correct', 'incorrect'].forEach((bannerType) => {
+      it(`should render StyledWrapper with the correct cursor for ${bannerType} banner type`, () => {
+        wrapper = shallow(<StyledWrapper theme={theme} bannerType={bannerType} />);
+
+        expect(wrapper).toHaveStyleRule('cursor', 'default');
+      });
+    });
+
+    it('should render StyledWrapper with no cursor for undecided banner type', () => {
+      wrapper = shallow(<StyledWrapper theme={theme} bannerType="undecided" />);
+
+      expect(wrapper).not.toHaveStyleRule('cursor');
+    });
+  });
+
+  describe('Additional styles', () => {
     ['correct', 'incorrect'].forEach((bannerType) => {
       it(`should render StyledWrapper without additional styles for ${bannerType} banner type`, () => {
         wrapper = shallow(<StyledWrapper theme={theme} bannerType={bannerType} />);

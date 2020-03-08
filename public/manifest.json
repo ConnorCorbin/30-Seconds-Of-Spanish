@@ -6,8 +6,7 @@
   "icons": {
     "32": "logo_32.png",
     "64": "logo_64.png",
-    "128": "logo_128.png",
-    "256": "logo_256.png"
+    "128": "logo_128.png"
   },
   "browser_action": {
     "default_icon": "logo_32.png"

@@ -14,6 +14,7 @@ const baseStyles = css`
   border-radius: 16px;
   box-sizing: border-box;
   color: ${getTextColor};
+  font-family: inherit;
   font-size: 18px;
   height: 90px;
   line-height: 24px;
