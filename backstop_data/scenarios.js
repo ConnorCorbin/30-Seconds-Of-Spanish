@@ -48,4 +48,20 @@ module.exports = [{
   url: 'http://localhost:3000/?component=TranslateTextQuestion',
   selectors: ['#root'],
   misMatchThreshold: 0,
+}, {
+  label: 'TextLabel-1',
+  url: 'http://localhost:3000/?component=TextLabel-1',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'TextLabel-2',
+  url: 'http://localhost:3000/?component=TextLabel-2',
+  selectors: ['#root'],
+  hoverSelector: '#root > div',
+  misMatchThreshold: 0,
+}, {
+  label: 'TextLabel-3',
+  url: 'http://localhost:3000/?component=TextLabel-3',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
 }];

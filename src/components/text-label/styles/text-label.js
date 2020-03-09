@@ -4,30 +4,36 @@ import media from 'common/services/dimensions-service';
 
 const getTextColor = ({ theme }) => theme.colors.slate;
 
-const getPointerEvents = ({ isAnswerSubmitted }) => isAnswerSubmitted && 'pointer-events: none;';
+const getPointerEvents = ({ isAnswerSubmitted }) => (
+  isAnswerSubmitted
+    ? 'none'
+    : 'auto'
+);
 
-const getBackgroundColor = ({ theme, isActive }) => (
-  isActive
+const getBackgroundColor = ({ theme, isLabelActive }) => (
+  isLabelActive
     ? theme.colors.lightBlue
     : theme.colors.white
 );
 
-const getHoverStyles = ({ theme, isActive }) => {
-  if (isActive) return null;
-
-  return css`
-    :hover {
-      background: ${theme.colors.lightGray};
-      cursor: pointer;
-    }
-  `;
-};
-
-const getBorderColor = ({ theme, isActive }) => (
-  isActive
+const getBorderColor = ({ theme, isLabelActive }) => (
+  isLabelActive
     ? theme.colors.darkBlue
     : theme.colors.darkGray
 );
+
+const getHoverStyles = ({ theme, isLabelActive }) => !isLabelActive && `
+  :hover {
+    background: ${theme.colors.lightGray};
+    cursor: pointer;
+  }
+`;
+
+const getFocusStyles = ({ isAnswerSubmitted }) => isAnswerSubmitted && `
+  :focus {
+    outline: none;
+  }
+`;
 
 const baseStyles = css`
   align-items: center;
@@ -42,12 +48,13 @@ const baseStyles = css`
   margin: 10px 0;
   max-width: 100%;
   padding: 12px 16px;
+  pointer-events: ${getPointerEvents};
 `;
 
 export default styled.span`
   ${baseStyles}
-  ${getPointerEvents}
   ${getHoverStyles}
+  ${getFocusStyles}
   ${media.LARGE`
     height: 40px;
   `}

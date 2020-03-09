@@ -12,6 +12,7 @@ Multiple Choice Question features:
 Consumed components:
 
 * ChallengeHeader
+* TextLabel
 * ResultBanner
 
 ## Data Model
