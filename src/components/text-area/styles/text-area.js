@@ -21,10 +21,6 @@ const baseStyles = css`
   padding: 10px;
   resize: none;
   width: 100%;
-
-  :focus {
-    outline: none;
-  }
 `;
 
 export default styled.textarea`

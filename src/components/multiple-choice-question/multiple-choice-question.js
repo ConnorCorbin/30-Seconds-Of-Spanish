@@ -9,7 +9,7 @@ import getResultBanner from 'common/services/get-result-banner';
 import ANSWER_STATUS from 'common/constants/answer-status';
 
 import StyledWrapper from 'components/multiple-choice-question/styles/wrapper';
-import StyledLabel from 'components/multiple-choice-question/styles/label';
+import TextLabel from 'components/text-label/text-label';
 
 const { correct, incorrect, undecided } = ANSWER_STATUS;
 
@@ -22,9 +22,10 @@ class MultipleChoiceQuestion extends Component {
   };
 
   onClickLabelHandler = (index) => () => {
-    const { activeLabelIndex } = this.state;
+    const { activeLabelIndex, isAnswerSubmitted } = this.state;
+    const isActiveLabelIndex = activeLabelIndex === index;
 
-    if (activeLabelIndex === index) return null;
+    if (isAnswerSubmitted || isActiveLabelIndex) return null;
 
     return this.setState({
       activeLabelIndex: index,
@@ -37,8 +38,9 @@ class MultipleChoiceQuestion extends Component {
     const { activeLabelIndex } = this.state;
 
     const answerSelectedByUser = possibleAnswers[activeLabelIndex];
+    const isAnswerCorrect = answerSelectedByUser === correctAnswer;
 
-    if (answerSelectedByUser === correctAnswer) return this.setState({
+    if (isAnswerCorrect) return this.setState({
       isAnswerSubmitted: true,
       answerStatus: correct,
     });
@@ -47,6 +49,22 @@ class MultipleChoiceQuestion extends Component {
       isAnswerSubmitted: true,
       answerStatus: incorrect,
     });
+  };
+
+  onKeyPressHandler = (index) => (event) => {
+    const { charCode } = event;
+    const { activeLabelIndex, isAnswerSubmitted } = this.state;
+
+    if (isAnswerSubmitted) return null;
+
+    const isEnterKeyPressed = charCode === 13;
+    const isSameLabelSelected = index === activeLabelIndex;
+
+    if (isEnterKeyPressed && isSameLabelSelected) return this.onClickButtonHandler()();
+
+    if (isEnterKeyPressed && !isSameLabelSelected) return this.onClickLabelHandler(index)();
+
+    return null;
   };
 
   getCorrectResultBanner = () => {
@@ -87,20 +105,30 @@ class MultipleChoiceQuestion extends Component {
     );
   };
 
-  getPossibleAnswers = possibleAnswers => possibleAnswers
-    .map((answer, index) => (
-      <StyledLabel
-        key={convertStringToId(answer) + index}
-        onClick={this.onClickLabelHandler(index)}
-        isActive={this.state.activeLabelIndex === index}
-        isAnswerSubmitted={this.state.isAnswerSubmitted}
-      >
-        {answer}
-      </StyledLabel>
-    ));
+  getPossibleAnswers = (possibleAnswers) => {
+    const { activeLabelIndex, isAnswerSubmitted } = this.state;
+
+    const textLabels = possibleAnswers.map((answerText, index) => {
+      const textLabelKey = convertStringToId(answerText) + index;
+      const isLabelActive = activeLabelIndex === index;
+
+      return (
+        <TextLabel
+          key={textLabelKey}
+          labelText={answerText}
+          isLabelActive={isLabelActive}
+          isAnswerSubmitted={isAnswerSubmitted}
+          onClickFunction={this.onClickLabelHandler(index)}
+          onKeyPressFunction={this.onKeyPressHandler(index)}
+        />
+      );
+    });
+
+    return textLabels;
+  };
 
   render() {
-    const { questionTitle, questionText, possibleAnswers } = this.props;
+    const { questionTitle, questionText, possibleAnswers = [] } = this.props;
 
     if (!possibleAnswers.length) return null;
 
@@ -115,10 +143,6 @@ class MultipleChoiceQuestion extends Component {
     );
   }
 }
-
-MultipleChoiceQuestion.defaultProps = {
-  possibleAnswers: [],
-};
 
 MultipleChoiceQuestion.propTypes = {
   // MultipleChoiceQuestion

@@ -27,30 +27,30 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       questionText="One, Two, Three!"
       questionTitle="Mark the correct meaning"
     />
-    <styled.span
-      isActive={false}
+    <TextLabel
       isAnswerSubmitted={false}
+      isLabelActive={false}
       key="Uno-dos-tres0"
-      onClick={[Function]}
-    >
-      ¡Uno, dos, tres!
-    </styled.span>
-    <styled.span
-      isActive={false}
+      labelText="¡Uno, dos, tres!"
+      onClickFunction={[Function]}
+      onKeyPressFunction={[Function]}
+    />
+    <TextLabel
       isAnswerSubmitted={false}
+      isLabelActive={false}
       key="Un-queso-31"
-      onClick={[Function]}
-    >
-      ¡Un, queso, 3
-    </styled.span>
-    <styled.span
-      isActive={false}
+      labelText="¡Un, queso, 3"
+      onClickFunction={[Function]}
+      onKeyPressFunction={[Function]}
+    />
+    <TextLabel
       isAnswerSubmitted={false}
+      isLabelActive={false}
       key="1-sal-y-32"
-      onClick={[Function]}
-    >
-      ¡1, sal y 3!
-    </styled.span>
+      labelText="¡1, sal y 3!"
+      onClickFunction={[Function]}
+      onKeyPressFunction={[Function]}
+    />
   </styled.div>
   <Memo(ResultBanner)
     bannerType="undecided"

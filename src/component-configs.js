@@ -5,6 +5,7 @@ import resultBannerConfigs from 'components/result-banner/config';
 import textAreaConfigs from 'components/text-area/config';
 import challengeHeaderConfigs from 'components/challenge-header/config';
 import translateTextQuestionConfigs from 'components/translate-text-question/config';
+import textLabelConfigs from 'components/text-label/config/index';
 
 export default {
   ...imageConfigs,
@@ -14,4 +15,5 @@ export default {
   ...textAreaConfigs,
   ...challengeHeaderConfigs,
   ...translateTextQuestionConfigs,
+  ...textLabelConfigs,
 };
