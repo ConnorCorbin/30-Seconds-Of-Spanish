@@ -3,7 +3,7 @@
 Text Label features:
 
 * Render label with passed in text
-* Pass both onClick and onKeyPress functions to execute when onClick and ononKeyPress event is fired
+* Pass both onClick and onKeyPress functions to execute when onClick and onKeyPress event is fired
 
 Consumed components:
 
