@@ -7,7 +7,7 @@ const getTextColor = ({ theme }) => theme.colors.slate;
 const baseStyles = css`
   color: ${getTextColor};
   font-family: inherit;
-  margin: 10px auto auto auto;
+  margin: 0 auto auto auto;
   text-align: left;
   user-select: none;
   width: calc(100% - 20px);

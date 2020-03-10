@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label component Label component should render image Label component 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "correctBannerBackground": "#b8f28b",
+        "correctBannerText": "#58a700",
+        "darkBlue": "#1cb0f6",
+        "darkGray": "#e5e5e5",
+        "incorrectBannerBackground": "#ffc1c1",
+        "incorrectBannerText": "#ea2b2b",
+        "lightBlue": "#ddf4ff",
+        "lightGray": "#f7f7f7",
+        "slate": "#323c41",
+        "undecidedBannerBackground": "#f5f5f5",
+        "white": "#ffffff",
+      },
+    }
+  }
+>
+  <styled.div>
+    <styled.div
+      aria-label="Some nice label text"
+      isAnswerSubmitted={false}
+      isImageLabel={false}
+      isLabelActive={false}
+      tabIndex={0}
+    >
+      <styled.span>
+        Some nice label text
+      </styled.span>
+    </styled.div>
+  </styled.div>
+</ThemeProvider>
+`;
+
+exports[`Label component Label component should render text Label component 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "colors": Object {
+        "correctBannerBackground": "#b8f28b",
+        "correctBannerText": "#58a700",
+        "darkBlue": "#1cb0f6",
+        "darkGray": "#e5e5e5",
+        "incorrectBannerBackground": "#ffc1c1",
+        "incorrectBannerText": "#ea2b2b",
+        "lightBlue": "#ddf4ff",
+        "lightGray": "#f7f7f7",
+        "slate": "#323c41",
+        "undecidedBannerBackground": "#f5f5f5",
+        "white": "#ffffff",
+      },
+    }
+  }
+>
+  <styled.div>
+    <styled.div
+      aria-label="Some nice label text"
+      isAnswerSubmitted={false}
+      isImageLabel={false}
+      isLabelActive={false}
+      tabIndex={0}
+    >
+      <styled.span>
+        Some nice label text
+      </styled.span>
+    </styled.div>
+  </styled.div>
+</ThemeProvider>
+`;
