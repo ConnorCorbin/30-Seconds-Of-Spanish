@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import media from 'common/services/dimensions-service';
+import StyledImage from 'components/image/styles/image';
+import StyledWrapper from 'components/image/styles/wrapper';
 
 const getTextColor = ({ theme }) => theme.colors.slate;
 
@@ -35,6 +36,19 @@ const getFocusStyles = ({ isAnswerSubmitted }) => isAnswerSubmitted && `
   }
 `;
 
+const getHeight = ({ isImageLabel }) => (
+  isImageLabel
+    ? '56px'
+    : '36px'
+);
+
+const getAdditionalImageLabelStyles = ({ isImageLabel }) => isImageLabel && `
+  ${StyledImage}, ${StyledWrapper} {
+    height: 100%;
+    width: auto;
+  }
+`;
+
 const baseStyles = css`
   align-items: center;
   background: ${getBackgroundColor};
@@ -43,7 +57,7 @@ const baseStyles = css`
   color: ${getTextColor};
   display: flex;
   font-size: 16px;
-  height: 36px;
+  height: ${getHeight};
   justify-content: center;
   margin: 10px 0;
   max-width: 100%;
@@ -51,11 +65,9 @@ const baseStyles = css`
   pointer-events: ${getPointerEvents};
 `;
 
-export default styled.span`
+export default styled.div`
   ${baseStyles}
   ${getHoverStyles}
   ${getFocusStyles}
-  ${media.LARGE`
-    height: 40px;
-  `}
+  ${getAdditionalImageLabelStyles}
 `;

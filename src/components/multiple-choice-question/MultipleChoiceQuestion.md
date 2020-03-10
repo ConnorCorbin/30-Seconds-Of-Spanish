@@ -12,15 +12,14 @@ Multiple Choice Question features:
 Consumed components:
 
 * ChallengeHeader
-* TextLabel
+* Label
 * ResultBanner
 
 ## Data Model
 
 | Configurable Fields | Type | Component | Default | Description |
 | ------------------- | ---- | --------- | ------- | ----------- |
-| possibleAnswers | `array` | MultipleChoiceQuestion | | A array of possible answer consumers can pick from |
-| correctAnswer | `string` | MultipleChoiceQuestion | | The correct answer for the question |
+| possibleAnswers | `array` | MultipleChoiceQuestion | | An array of objects containing possible answers information |
 | questionTitle | `string` | ChallengeHeader | | Title of the question |
 | questionText | `string` | ChallengeHeader | | text containing the question |
 | buttonText | `string` | ResultBanner | | Text for undecided result banner button |

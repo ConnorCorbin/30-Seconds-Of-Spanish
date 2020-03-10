@@ -9,7 +9,7 @@ import getResultBanner from 'common/services/get-result-banner';
 import ANSWER_STATUS from 'common/constants/answer-status';
 
 import StyledWrapper from 'components/multiple-choice-question/styles/wrapper';
-import TextLabel from 'components/text-label/text-label';
+import Label from 'components/label/label';
 
 const { correct, incorrect, undecided } = ANSWER_STATUS;
 
@@ -34,13 +34,13 @@ class MultipleChoiceQuestion extends Component {
   };
 
   onClickButtonHandler = () => () => {
-    const { possibleAnswers, correctAnswer } = this.props;
+    const { possibleAnswers } = this.props;
     const { activeLabelIndex } = this.state;
 
     const answerSelectedByUser = possibleAnswers[activeLabelIndex];
-    const isAnswerCorrect = answerSelectedByUser === correctAnswer;
+    const { isCorrectAnswer } = answerSelectedByUser;
 
-    if (isAnswerCorrect) return this.setState({
+    if (isCorrectAnswer) return this.setState({
       isAnswerSubmitted: true,
       answerStatus: correct,
     });
@@ -69,17 +69,21 @@ class MultipleChoiceQuestion extends Component {
 
   getCorrectResultBanner = () => {
     const {
+      possibleAnswers,
       buttonText,
       correctResultTitle,
       correctResultText,
       incorrectResultTitle,
       incorrectResultText,
-      correctAnswer,
     } = this.props;
     const {
       isLabelActive,
       answerStatus,
+      activeLabelIndex,
     } = this.state;
+
+    const answerSelectedByUser = possibleAnswers[activeLabelIndex];
+    const { text } = answerSelectedByUser || {};
 
     const undecidedResultBannerProps = {
       buttonText,
@@ -94,7 +98,7 @@ class MultipleChoiceQuestion extends Component {
 
     const incorrectResultBannerProps = {
       incorrectResultTitle,
-      incorrectResultText: incorrectResultText || correctAnswer,
+      incorrectResultText: incorrectResultText || text,
     };
 
     return getResultBanner(
@@ -108,14 +112,20 @@ class MultipleChoiceQuestion extends Component {
   getPossibleAnswers = (possibleAnswers) => {
     const { activeLabelIndex, isAnswerSubmitted } = this.state;
 
-    const textLabels = possibleAnswers.map((answerText, index) => {
-      const textLabelKey = convertStringToId(answerText) + index;
+    const Labels = possibleAnswers.map(({
+      text,
+      imageUrl,
+      imageAltTag,
+    }, index) => {
+      const LabelKey = convertStringToId(text) + index;
       const isLabelActive = activeLabelIndex === index;
 
       return (
-        <TextLabel
-          key={textLabelKey}
-          labelText={answerText}
+        <Label
+          key={LabelKey}
+          labelText={text}
+          imageUrl={imageUrl}
+          imageAltTag={imageAltTag}
           isLabelActive={isLabelActive}
           isAnswerSubmitted={isAnswerSubmitted}
           onClickFunction={this.onClickLabelHandler(index)}
@@ -124,7 +134,7 @@ class MultipleChoiceQuestion extends Component {
       );
     });
 
-    return textLabels;
+    return Labels;
   };
 
   render() {
@@ -146,8 +156,12 @@ class MultipleChoiceQuestion extends Component {
 
 MultipleChoiceQuestion.propTypes = {
   // MultipleChoiceQuestion
-  possibleAnswers: PropTypes.arrayOf(PropTypes.shape),
-  correctAnswer: PropTypes.string,
+  possibleAnswers: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string,
+    imageUrl: PropTypes.string,
+    imageAltTag: PropTypes.string,
+    isCorrectAnswer: PropTypes.bool,
+  })),
   // ChallengeHeader
   questionTitle: PropTypes.string,
   questionText: PropTypes.string,

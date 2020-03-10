@@ -27,7 +27,9 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       questionText="One, Two, Three!"
       questionTitle="Mark the correct meaning"
     />
-    <TextLabel
+    <Label
+      imageAltTag=""
+      imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
       key="Uno-dos-tres0"
@@ -35,15 +37,19 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       onClickFunction={[Function]}
       onKeyPressFunction={[Function]}
     />
-    <TextLabel
+    <Label
+      imageAltTag=""
+      imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
       key="Un-queso-31"
-      labelText="¡Un, queso, 3"
+      labelText="¡Un, queso, 3!"
       onClickFunction={[Function]}
       onKeyPressFunction={[Function]}
     />
-    <TextLabel
+    <Label
+      imageAltTag=""
+      imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
       key="1-sal-y-32"

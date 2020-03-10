@@ -9,8 +9,13 @@ module.exports = [{
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
-  label: 'MultipleChoiceQuestion',
-  url: 'http://localhost:3000/?component=MultipleChoiceQuestion',
+  label: 'MultipleChoiceQuestion-1',
+  url: 'http://localhost:3000/?component=MultipleChoiceQuestion-1',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'MultipleChoiceQuestion-2',
+  url: 'http://localhost:3000/?component=MultipleChoiceQuestion-2',
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
@@ -49,19 +54,35 @@ module.exports = [{
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
-  label: 'TextLabel-1',
-  url: 'http://localhost:3000/?component=TextLabel-1',
+  label: 'Label-1',
+  url: 'http://localhost:3000/?component=Label-1',
   selectors: ['#root'],
   misMatchThreshold: 0,
 }, {
-  label: 'TextLabel-2',
-  url: 'http://localhost:3000/?component=TextLabel-2',
+  label: 'Label-2',
+  url: 'http://localhost:3000/?component=Label-2',
   selectors: ['#root'],
   hoverSelector: '#root > div',
   misMatchThreshold: 0,
 }, {
-  label: 'TextLabel-3',
-  url: 'http://localhost:3000/?component=TextLabel-3',
+  label: 'Label-3',
+  url: 'http://localhost:3000/?component=Label-3',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'Label-4',
+  url: 'http://localhost:3000/?component=Label-4',
+  selectors: ['#root'],
+  misMatchThreshold: 0,
+}, {
+  label: 'Label-5',
+  url: 'http://localhost:3000/?component=Label-5',
+  selectors: ['#root'],
+  hoverSelector: '#root > div',
+  misMatchThreshold: 0,
+}, {
+  label: 'Label-6',
+  url: 'http://localhost:3000/?component=Label-6',
   selectors: ['#root'],
   misMatchThreshold: 0,
 }];

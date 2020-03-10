@@ -5,5 +5,5 @@ export default styled.span`
   display: block;
   font-size: 20px;
   line-height: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;

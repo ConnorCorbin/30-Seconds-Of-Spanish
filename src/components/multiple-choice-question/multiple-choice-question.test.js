@@ -2,9 +2,9 @@ import React from 'react';
 
 import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
 import ChallengeHeader from 'components/challenge-header/challenge-header';
-import TextLabel from 'components/text-label/text-label';
+import Label from 'components/label/label';
 import ResultBanner from 'components/result-banner/result-banner';
-import StyledTextLabel from 'components/text-label/styles/text-label';
+import StyledLabel from 'components/label/styles/label';
 import StyledButton from 'components/result-banner/styles/button';
 
 describe('MultipleChoiceQuestion component', () => {
@@ -12,12 +12,22 @@ describe('MultipleChoiceQuestion component', () => {
   const getWrapper = ({
     questionTitle = 'Mark the correct meaning',
     questionText = 'One, Two, Three!',
-    possibleAnswers = [
-      '¡Uno, dos, tres!',
-      '¡Un, queso, 3',
-      '¡1, sal y 3!',
-    ],
-    correctAnswer = '¡Uno, dos, tres!',
+    possibleAnswers = [{
+      text: '¡Uno, dos, tres!',
+      imageUrl: '',
+      imageAltTag: '',
+      isCorrectAnswer: true,
+    }, {
+      text: '¡Un, queso, 3!',
+      imageUrl: '',
+      imageAltTag: '',
+      isCorrectAnswer: false,
+    }, {
+      text: '¡1, sal y 3!',
+      imageUrl: '',
+      imageAltTag: '',
+      isCorrectAnswer: false,
+    }],
     buttonText = 'Check Result',
     correctResultTitle = 'Correct Result!',
     correctResultText = 'Well Done.',
@@ -28,7 +38,6 @@ describe('MultipleChoiceQuestion component', () => {
       questionTitle={questionTitle}
       questionText={questionText}
       possibleAnswers={possibleAnswers}
-      correctAnswer={correctAnswer}
       buttonText={buttonText}
       correctResultTitle={correctResultTitle}
       correctResultText={correctResultText}
@@ -74,39 +83,39 @@ describe('MultipleChoiceQuestion component', () => {
     });
   });
 
-  describe('TextLabel component', () => {
+  describe('Label component', () => {
     let expectedValues;
     let values;
 
-    it('should render TextLabel with correct key value', () => {
+    it('should render Label with correct key value', () => {
       expectedValues = ['Uno-dos-tres0', 'Un-queso-31', '1-sal-y-32'];
       wrapper = getWrapper();
 
-      values = wrapper.find(TextLabel).map(label => label.key());
+      values = wrapper.find(Label).map(label => label.key());
       expect(values).toEqual(expectedValues);
     });
 
-    it('should render TextLabel with correct isLabelActive prop value', () => {
+    it('should render Label with correct isLabelActive prop value', () => {
       expectedValues = [false, false, false];
       wrapper = getWrapper();
 
-      values = wrapper.find(TextLabel).map(label => label.props().isLabelActive);
+      values = wrapper.find(Label).map(label => label.props().isLabelActive);
       expect(values).toEqual(expectedValues);
     });
 
-    it('should render TextLabel with correct isAnswerSubmitted prop value', () => {
+    it('should render Label with correct isAnswerSubmitted prop value', () => {
       expectedValues = [false, false, false];
       wrapper = getWrapper();
 
-      values = wrapper.find(TextLabel).map(label => label.props().isAnswerSubmitted);
+      values = wrapper.find(Label).map(label => label.props().isAnswerSubmitted);
       expect(values).toEqual(expectedValues);
     });
 
-    it('should render TextLabel with correct label text', () => {
-      expectedValues = ['¡Uno, dos, tres!', '¡Un, queso, 3', '¡1, sal y 3!'];
+    it('should render Label with correct label text', () => {
+      expectedValues = ['¡Uno, dos, tres!', '¡Un, queso, 3!', '¡1, sal y 3!'];
       wrapper = getWrapper();
 
-      values = wrapper.find(TextLabel).map(label => label.dive().children().text());
+      values = wrapper.find(Label).map(label => label.dive().children().text());
       expect(values).toEqual(expectedValues);
     });
   });
@@ -122,7 +131,7 @@ describe('MultipleChoiceQuestion component', () => {
       wrapper = getWrapper();
 
       expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
       expect(wrapper.find(ResultBanner).props().bannerType).toEqual('correct');
@@ -132,7 +141,7 @@ describe('MultipleChoiceQuestion component', () => {
       wrapper = getWrapper();
 
       expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
       expect(wrapper.find(ResultBanner).props().bannerType).toEqual('incorrect');
@@ -140,20 +149,20 @@ describe('MultipleChoiceQuestion component', () => {
   });
 
   describe('onClickLabelHandler', () => {
-    it('should change activeLabelIndex state when TextLabel is clicked', () => {
+    it('should change activeLabelIndex state when Label is clicked', () => {
       wrapper = getWrapper();
 
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
       expect(wrapper.state('activeLabelIndex')).toEqual(0);
     });
 
-    it('should change isLabelActive state when TextLabel is clicked', () => {
+    it('should change isLabelActive state when Label is clicked', () => {
       wrapper = getWrapper();
 
       expect(wrapper.state('isLabelActive')).toEqual(false);
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
       expect(wrapper.state('isLabelActive')).toEqual(true);
     });
@@ -164,14 +173,14 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
       expect(wrapper.state('isLabelActive')).toEqual(false);
 
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton)
         .simulate('click');
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
       expect(wrapper.state('isLabelActive')).toEqual(true);
 
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
 
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
@@ -184,12 +193,12 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
       expect(wrapper.state('isLabelActive')).toEqual(false);
 
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
       expect(wrapper.state('isLabelActive')).toEqual(true);
 
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
 
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
@@ -204,7 +213,7 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
       expect(wrapper.state('answerStatus')).toEqual('undecided');
 
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
 
@@ -218,7 +227,7 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
       expect(wrapper.state('answerStatus')).toEqual('undecided');
 
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
 
@@ -230,27 +239,27 @@ describe('MultipleChoiceQuestion component', () => {
   describe('onKeyPressHandler', () => {
     const mockEnterKeyPress = { charCode: 13 };
 
-    it('should update state if enter key is pressed on non-active TextLabel', () => {
+    it('should update state if enter key is pressed on non-active Label', () => {
       wrapper = getWrapper();
 
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
     });
 
-    it('should update state if enter key is pressed on active TextLabel for incorrect answer', () => {
+    it('should update state if enter key is pressed on active Label for incorrect answer', () => {
       wrapper = getWrapper();
 
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
 
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
       expect(wrapper.state('answerStatus')).toEqual('undecided');
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
 
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
 
       expect(wrapper.state('isAnswerSubmitted')).toEqual(true);
@@ -258,18 +267,18 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('activeLabelIndex')).toEqual(2);
     });
 
-    it('should update state if enter key is pressed on active TextLabel for correct answer', () => {
+    it('should update state if enter key is pressed on active Label for correct answer', () => {
       wrapper = getWrapper();
 
       expect(wrapper.state('activeLabelIndex')).toEqual(9999);
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
 
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
       expect(wrapper.state('answerStatus')).toEqual('undecided');
       expect(wrapper.state('activeLabelIndex')).toEqual(0);
 
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
 
       expect(wrapper.state('isAnswerSubmitted')).toEqual(true);
@@ -284,7 +293,7 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('answerStatus')).toEqual('undecided');
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
 
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('keypress', { charCode: 23 });
 
       expect(wrapper.state('isLabelActive')).toEqual(false);
@@ -299,7 +308,7 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('answerStatus')).toEqual('undecided');
       expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
 
-      wrapper.find(TextLabel).first().dive().find(StyledTextLabel)
+      wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
       wrapper.find(ResultBanner).dive().find(StyledButton)
         .simulate('click');
@@ -307,7 +316,7 @@ describe('MultipleChoiceQuestion component', () => {
       expect(wrapper.state('isLabelActive')).toEqual(true);
       expect(wrapper.state('answerStatus')).toEqual('correct');
       expect(wrapper.state('isAnswerSubmitted')).toEqual(true);
-      wrapper.find(TextLabel).last().dive().find(StyledTextLabel)
+      wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('keypress', mockEnterKeyPress);
 
       expect(wrapper.state('isLabelActive')).toEqual(true);
