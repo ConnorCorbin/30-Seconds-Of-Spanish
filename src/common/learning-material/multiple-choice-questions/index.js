@@ -75,7 +75,7 @@ const questions = [{
     imageAltTag: 'Plant Mars',
     isCorrectAnswer: false,
   }, {
-    text: 'jueves',
+    text: 'Jueves',
     imageUrl: 'https://image.flaticon.com/icons/svg/547/547450.svg',
     imageAltTag: 'Planet Jupiter',
     isCorrectAnswer: false,

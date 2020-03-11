@@ -1,5 +1,7 @@
 import React from 'react';
 
+import shuffleArray from 'common/services/shuffle-array';
+
 import MultipleChoiceQuestion from 'components/multiple-choice-question/multiple-choice-question';
 import ChallengeHeader from 'components/challenge-header/challenge-header';
 import Label from 'components/label/label';
@@ -7,27 +9,33 @@ import ResultBanner from 'components/result-banner/result-banner';
 import StyledLabel from 'components/label/styles/label';
 import StyledButton from 'components/result-banner/styles/button';
 
+const possibleAnswersArray = [{
+  text: '¡Uno, dos, tres!',
+  imageUrl: '',
+  imageAltTag: '',
+  isCorrectAnswer: true,
+}, {
+  text: '¡Un, queso, 3!',
+  imageUrl: '',
+  imageAltTag: '',
+  isCorrectAnswer: false,
+}, {
+  text: '¡1, sal y 3!',
+  imageUrl: '',
+  imageAltTag: '',
+  isCorrectAnswer: false,
+}];
+
+jest.mock('common/services/shuffle-array', () => jest.fn());
+
+shuffleArray.mockImplementation(() => possibleAnswersArray);
+
 describe('MultipleChoiceQuestion component', () => {
   let wrapper;
   const getWrapper = ({
     questionTitle = 'Mark the correct meaning',
     questionText = 'One, Two, Three!',
-    possibleAnswers = [{
-      text: '¡Uno, dos, tres!',
-      imageUrl: '',
-      imageAltTag: '',
-      isCorrectAnswer: true,
-    }, {
-      text: '¡Un, queso, 3!',
-      imageUrl: '',
-      imageAltTag: '',
-      isCorrectAnswer: false,
-    }, {
-      text: '¡1, sal y 3!',
-      imageUrl: '',
-      imageAltTag: '',
-      isCorrectAnswer: false,
-    }],
+    possibleAnswers = possibleAnswersArray,
     buttonText = 'Check Result',
     correctResultTitle = 'Correct Result!',
     correctResultText = 'Well Done.',
@@ -67,6 +75,7 @@ describe('MultipleChoiceQuestion component', () => {
     expect(wrapper.state('isLabelActive')).toEqual(false);
     expect(wrapper.state('answerStatus')).toEqual('undecided');
     expect(wrapper.state('isAnswerSubmitted')).toEqual(false);
+    expect(wrapper.state('shuffledPossibleAnswers')).toEqual(possibleAnswersArray);
   });
 
   describe('ChallengeHeader component', () => {
