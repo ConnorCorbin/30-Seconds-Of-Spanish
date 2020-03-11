@@ -7,6 +7,7 @@ import convertStringToId from 'common/services/covert-string-to-id';
 import getChallengeHeader from 'common/services/get-challenge-header';
 import getResultBanner from 'common/services/get-result-banner';
 import ANSWER_STATUS from 'common/constants/answer-status';
+import shuffleArray from 'common/services/shuffle-array';
 
 import StyledWrapper from 'components/multiple-choice-question/styles/wrapper';
 import Label from 'components/label/label';
@@ -19,7 +20,12 @@ class MultipleChoiceQuestion extends Component {
     answerStatus: undecided,
     isLabelActive: false,
     isAnswerSubmitted: false,
+    shuffledPossibleAnswers: [],
   };
+
+  componentDidMount = () => this.setState({
+    shuffledPossibleAnswers: shuffleArray(this.props.possibleAnswers),
+  });
 
   onClickLabelHandler = (index) => () => {
     const { activeLabelIndex, isAnswerSubmitted } = this.state;
@@ -34,10 +40,9 @@ class MultipleChoiceQuestion extends Component {
   };
 
   onClickButtonHandler = () => () => {
-    const { possibleAnswers } = this.props;
-    const { activeLabelIndex } = this.state;
+    const { activeLabelIndex, shuffledPossibleAnswers } = this.state;
 
-    const answerSelectedByUser = possibleAnswers[activeLabelIndex];
+    const answerSelectedByUser = shuffledPossibleAnswers[activeLabelIndex];
     const { isCorrectAnswer } = answerSelectedByUser;
 
     if (isCorrectAnswer) return this.setState({
@@ -69,7 +74,6 @@ class MultipleChoiceQuestion extends Component {
 
   getCorrectResultBanner = () => {
     const {
-      possibleAnswers,
       buttonText,
       correctResultTitle,
       correctResultText,
@@ -79,10 +83,11 @@ class MultipleChoiceQuestion extends Component {
     const {
       isLabelActive,
       answerStatus,
-      activeLabelIndex,
+      shuffledPossibleAnswers,
     } = this.state;
 
-    const answerSelectedByUser = possibleAnswers[activeLabelIndex];
+    const indexOfCorrectAnswer = shuffledPossibleAnswers.map(answer => answer.isCorrectAnswer).indexOf(true);
+    const answerSelectedByUser = shuffledPossibleAnswers[indexOfCorrectAnswer];
     const { text } = answerSelectedByUser || {};
 
     const undecidedResultBannerProps = {
@@ -109,10 +114,10 @@ class MultipleChoiceQuestion extends Component {
     );
   };
 
-  getPossibleAnswers = (possibleAnswers) => {
-    const { activeLabelIndex, isAnswerSubmitted } = this.state;
+  getPossibleAnswers = () => {
+    const { activeLabelIndex, isAnswerSubmitted, shuffledPossibleAnswers } = this.state;
 
-    const Labels = possibleAnswers.map(({
+    const Labels = shuffledPossibleAnswers.map(({
       text,
       imageUrl,
       imageAltTag,
@@ -138,7 +143,7 @@ class MultipleChoiceQuestion extends Component {
   };
 
   render() {
-    const { questionTitle, questionText, possibleAnswers = [] } = this.props;
+    const { questionTitle, questionText, possibleAnswers } = this.props;
 
     if (!possibleAnswers.length) return null;
 
@@ -146,13 +151,17 @@ class MultipleChoiceQuestion extends Component {
       <ThemeProvider theme={theme}>
         <StyledWrapper>
           {getChallengeHeader(questionTitle, questionText)}
-          {this.getPossibleAnswers(possibleAnswers)}
+          {this.getPossibleAnswers()}
         </StyledWrapper>
         {this.getCorrectResultBanner()}
       </ThemeProvider>
     );
   }
 }
+
+MultipleChoiceQuestion.defaultProps = {
+  possibleAnswers: [],
+};
 
 MultipleChoiceQuestion.propTypes = {
   // MultipleChoiceQuestion

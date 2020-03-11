@@ -12,12 +12,12 @@ module.exports = [{
   label: 'MultipleChoiceQuestion-1',
   url: 'http://localhost:3000/?component=MultipleChoiceQuestion-1',
   selectors: ['#root'],
-  misMatchThreshold: 0,
+  misMatchThreshold: 3.50,
 }, {
   label: 'MultipleChoiceQuestion-2',
   url: 'http://localhost:3000/?component=MultipleChoiceQuestion-2',
   selectors: ['#root'],
-  misMatchThreshold: 0,
+  misMatchThreshold: 3.50,
 }, {
   label: 'ResultBanner-1',
   url: 'http://localhost:3000/?component=ResultBanner-1',
