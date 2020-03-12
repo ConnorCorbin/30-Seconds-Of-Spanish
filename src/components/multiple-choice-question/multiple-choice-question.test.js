@@ -97,7 +97,7 @@ describe('MultipleChoiceQuestion component', () => {
     let values;
 
     it('should render Label with correct key value', () => {
-      expectedValues = ['Uno-dos-tres0', 'Un-queso-31', '1-sal-y-32'];
+      expectedValues = ['¡Uno, dos, tres!', '¡Un, queso, 3!', '¡1, sal y 3!'];
       wrapper = getWrapper();
 
       values = wrapper.find(Label).map(label => label.key());
