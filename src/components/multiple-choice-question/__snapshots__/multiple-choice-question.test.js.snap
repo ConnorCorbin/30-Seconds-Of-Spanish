@@ -32,7 +32,7 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
-      key="Uno-dos-tres0"
+      key="¡Uno, dos, tres!"
       labelText="¡Uno, dos, tres!"
       onClickFunction={[Function]}
       onKeyPressFunction={[Function]}
@@ -42,7 +42,7 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
-      key="Un-queso-31"
+      key="¡Un, queso, 3!"
       labelText="¡Un, queso, 3!"
       onClickFunction={[Function]}
       onKeyPressFunction={[Function]}
@@ -52,7 +52,7 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       imageUrl=""
       isAnswerSubmitted={false}
       isLabelActive={false}
-      key="1-sal-y-32"
+      key="¡1, sal y 3!"
       labelText="¡1, sal y 3!"
       onClickFunction={[Function]}
       onKeyPressFunction={[Function]}

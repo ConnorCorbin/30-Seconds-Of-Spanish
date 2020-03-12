@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import theme from 'common/theme';
-import convertStringToId from 'common/services/covert-string-to-id';
 import getChallengeHeader from 'common/services/get-challenge-header';
 import getResultBanner from 'common/services/get-result-banner';
 import ANSWER_STATUS from 'common/constants/answer-status';
@@ -117,17 +116,16 @@ class MultipleChoiceQuestion extends Component {
   getPossibleAnswers = () => {
     const { activeLabelIndex, isAnswerSubmitted, shuffledPossibleAnswers } = this.state;
 
-    const Labels = shuffledPossibleAnswers.map(({
+    return shuffledPossibleAnswers.map(({
       text,
       imageUrl,
       imageAltTag,
     }, index) => {
-      const LabelKey = convertStringToId(text) + index;
       const isLabelActive = activeLabelIndex === index;
 
       return (
         <Label
-          key={LabelKey}
+          key={text}
           labelText={text}
           imageUrl={imageUrl}
           imageAltTag={imageAltTag}
@@ -138,8 +136,6 @@ class MultipleChoiceQuestion extends Component {
         />
       );
     });
-
-    return Labels;
   };
 
   render() {

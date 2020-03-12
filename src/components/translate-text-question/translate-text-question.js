@@ -21,6 +21,60 @@ class TranslateTextQuestion extends Component {
     isTextAreaDisabled: false,
   };
 
+  removeAccents = (string) => string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  removepunctuation = (string) => string.replace(/[.,#!¡?¿$%&;:{}=\-_`~()]/g, '');
+
+  stripString = (string) => this.removeAccents(this.removepunctuation(string));
+
+  stringSimilarity = (string1, string2) => {
+    const lowercaseString1 = string1.toLowerCase();
+    const lowercaseString2 = string2.toLowerCase();
+
+    if (lowercaseString1 === lowercaseString2) return 100;
+
+    const bigramLength = 2;
+    let matchingBigrams = 0;
+    const string1Length = lowercaseString1.length;
+    const string2Length = lowercaseString2.length;
+    const indexAdjuster = 1;
+    const bigramMap = new Map();
+    const numberOfBigramsInString1 = string1Length - (bigramLength - indexAdjuster);
+    const numberOfBigramsInString2 = string2Length - (bigramLength - indexAdjuster);
+    const getBigram = (index, string) => string.substr(index, bigramLength);
+
+    [...Array(numberOfBigramsInString1)].forEach((value, index) => {
+      const bigramKey = getBigram(index, lowercaseString1);
+      const isBigramInMap = bigramMap.has(bigramKey);
+      const bigramValue = isBigramInMap
+        ? bigramMap.get(bigramKey) + 1
+        : 1;
+
+      bigramMap.set(bigramKey, bigramValue);
+    });
+
+    [...Array(numberOfBigramsInString2)].forEach((value, index) => {
+      const bigramKey = getBigram(index, lowercaseString1);
+      const isBigramInMap = bigramMap.has(bigramKey);
+      const bigramKeyValue = isBigramInMap
+        ? bigramMap.get(bigramKey)
+        : 0;
+      const count = bigramKeyValue;
+
+      if (count) {
+        bigramMap.set(bigramKey, count - 1);
+        matchingBigrams += 1;
+      }
+    });
+
+    const FractionPercentage = (
+      (matchingBigrams * bigramLength) / ((string1Length + string2Length
+        - ((bigramLength - indexAdjuster) * bigramLength)))
+    );
+
+    return FractionPercentage;
+  };
+
   onKeyPressHandler = () => (event) => {
     const { charCode } = event;
     const { isTextAreaActive } = this.state;
@@ -52,7 +106,12 @@ class TranslateTextQuestion extends Component {
     const { correctAnswer } = this.props;
     const { userInput, isAnswerSubmitted } = this.state;
 
-    if (userInput === correctAnswer) return this.setState({
+    const strippedCorrectAnswer = this.stripString(correctAnswer);
+    const strippedUserInput = this.stripString(userInput);
+    const likenessPercentage = this.stringSimilarity(strippedCorrectAnswer, strippedUserInput);
+    const minimumLikenessPercentage = 0.90;
+
+    if (likenessPercentage >= minimumLikenessPercentage) return this.setState({
       isAnswerSubmitted: !isAnswerSubmitted,
       answerStatus: correct,
       isTextAreaDisabled: true,
