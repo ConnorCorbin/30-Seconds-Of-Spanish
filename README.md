@@ -162,3 +162,9 @@ The current folder structure will look like the following:
   ```
 
   You can now find generated build in the `/build` folder.
+
+------
+
+## [Attributions](#attributions)
+
+- Icons [www.flaticon.com](https://www.flaticon.com)

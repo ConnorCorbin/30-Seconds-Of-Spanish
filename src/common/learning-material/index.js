@@ -2,6 +2,6 @@ import multipleChoiceQuestions from 'common/learning-material/multiple-choice-qu
 import translateTextQuestions from 'common/learning-material/translate-text-questions';
 
 export default [
-  ...multipleChoiceQuestions,
-  ...translateTextQuestions,
+  ...multipleChoiceQuestions(),
+  ...translateTextQuestions(),
 ];

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledWrapper from 'components/image/styles/wrapper';
-import StyledImage from 'components/image/styles/image';
 
 const Image = ({
   url,
@@ -12,7 +11,7 @@ const Image = ({
 
   return (
     <StyledWrapper>
-      <StyledImage
+      <img
         alt={altTag}
         src={url}
       />

@@ -7,7 +7,6 @@ module.exports = {
     "jsx-a11y",
   ],
   "extends": [
-    "react-app",
     "airbnb",
     "plugin:jest/recommended",
     "plugin:security/recommended",

@@ -1,5 +1,5 @@
 import imageConfigs from 'components/image/config';
-import imageBannerConfigs from 'components/image-banner/config';
+import headerConfigs from 'components/header/config';
 import multipleChoiceQuestionConfigs from 'components/multiple-choice-question/config';
 import resultBannerConfigs from 'components/result-banner/config';
 import textAreaConfigs from 'components/text-area/config';
@@ -9,7 +9,7 @@ import LabelConfigs from 'components/label/config/index';
 
 export default {
   ...imageConfigs,
-  ...imageBannerConfigs,
+  ...headerConfigs,
   ...multipleChoiceQuestionConfigs,
   ...resultBannerConfigs,
   ...textAreaConfigs,

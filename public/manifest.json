@@ -1,8 +1,8 @@
 {
   "name": "30 Seconds of Spanish",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "manifest_version": 2,
-  "description": "A plain text description",
+  "description": "Learn Spanish every time you open a New Tab! All you need is 30 seconds of less, to read, understand and complete a range of randomly generated interactive learning material.",
   "icons": {
     "32": "logo_32.png",
     "64": "logo_64.png",

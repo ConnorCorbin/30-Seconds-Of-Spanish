@@ -27,14 +27,14 @@ exports[`TranslateTextQuestion component should render TranslateTextQuestion com
       questionText="¿Is Juan from Spain?"
       questionTitle="Write this in Spanish"
     />
-    <TextArea
+    <Memo(TextArea)
       isTextAreaDisabled={false}
       language="english"
       onChangeFunction={[Function]}
       onKeyPressFunction={[Function]}
     />
   </styled.div>
-  <Memo(ResultBanner)
+  <ResultBanner
     bannerType="undecided"
     buttonText="Check Result"
     isActive={false}

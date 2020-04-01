@@ -51,7 +51,6 @@ describe('GetResultBanner service', () => {
         incorrectResultBannerProps,
       ];
 
-      expect(getResultBanner(...functionParameters)).toMatchSnapshot();
       expect(getResultBanner(...functionParameters)).toEqual(
         <ResultBanner
           {...resultBannerMap[answerStatus]}

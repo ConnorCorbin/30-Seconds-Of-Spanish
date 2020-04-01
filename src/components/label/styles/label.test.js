@@ -2,7 +2,6 @@ import React from 'react';
 import { css } from 'styled-components';
 
 import StyledLabel from 'components/label/styles/label';
-import StyledImage from 'components/image/styles/image';
 import StyledWrapper from 'components/image/styles/wrapper';
 
 describe('StyledLabel', () => {
@@ -105,30 +104,13 @@ describe('StyledLabel', () => {
   });
 
   describe('Additional image styles', () => {
-    const styledImageModifier = css`${StyledImage}`;
     const styledWrapperModifier = css`${StyledWrapper}`;
-
-    it('should render StyledLabel with additional height for StyledImage', () => {
-      wrapper = shallow(<StyledLabel theme={theme} isImageLabel />);
-
-      expect(wrapper).toHaveStyleRule('height', '100%', {
-        modifier: styledImageModifier,
-      });
-    });
 
     it('should render StyledLabel with additional height for StyledWrapper', () => {
       wrapper = shallow(<StyledLabel theme={theme} isImageLabel />);
 
       expect(wrapper).toHaveStyleRule('height', '100%', {
         modifier: styledWrapperModifier,
-      });
-    });
-
-    it('should render StyledLabel without additional height for StyledImage', () => {
-      wrapper = shallow(<StyledLabel theme={theme} isImageLabel />);
-
-      expect(wrapper).toHaveStyleRule('width', 'auto', {
-        modifier: styledImageModifier,
       });
     });
 

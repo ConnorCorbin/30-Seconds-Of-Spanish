@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { ReactComponent as CrossIcon } from 'common/icons/cross.svg';
-import { ReactComponent as TickIcon } from 'common/icons/tick.svg';
-
 import ResultBanner from 'components/result-banner/result-banner';
+import Icon from 'components/icon/icon';
 import StyledTitle from 'components/result-banner/styles/title';
 import StyledTitleText from 'components/result-banner/styles/title-text';
 import StyledButton from 'components/result-banner/styles/button';
@@ -17,7 +15,7 @@ describe('ResultBanner component', () => {
     incorrectResultText = 'En el tren.',
     bannerType,
     onClickFunction,
-    buttonText = 'Check Answer',
+    buttonText,
     isActive,
   } = {}) => shallow(
     <ResultBanner
@@ -41,6 +39,12 @@ describe('ResultBanner component', () => {
     });
   });
 
+  it('should render ResultBanner with correct default button text', () => {
+    wrapper = getWrapper({ buttonText: 'Check now!' });
+
+    expect(wrapper.find(StyledButton).children().text()).toEqual('Check now!');
+  });
+
   describe('Undecided ResultBanner', () => {
     beforeEach(() => {
       wrapper = getWrapper({ bannerType: 'undecided' });
@@ -51,7 +55,7 @@ describe('ResultBanner component', () => {
     });
 
     it('should render undecided ResultBanner with correct text', () => {
-      expect(wrapper.find(StyledButton).children().text()).toEqual('Check Answer');
+      expect(wrapper.find(StyledButton).children().text()).toEqual('Check Result');
     });
   });
 
@@ -66,7 +70,7 @@ describe('ResultBanner component', () => {
     });
 
     it('should render correct ResultBanner with Tick icon', () => {
-      expect(wrapper.find(TickIcon).exists()).toEqual(true);
+      expect(wrapper.find(Icon).props().name).toEqual('tick');
     });
   });
 
@@ -81,7 +85,7 @@ describe('ResultBanner component', () => {
     });
 
     it('should render incorrect ResultBanner with Cross icon', () => {
-      expect(wrapper.find(CrossIcon).exists()).toEqual(true);
+      expect(wrapper.find(Icon).props().name).toEqual('cross');
     });
   });
 
@@ -91,7 +95,7 @@ describe('ResultBanner component', () => {
         wrapper = getWrapper({ bannerType });
 
         expect(wrapper.find(StyledButton).exists()).toEqual(true);
-        expect(wrapper.find(StyledButton).children().text()).toEqual('Check Answer');
+        expect(wrapper.find(StyledButton).children().text()).toEqual('Check Result');
       });
     });
 
@@ -100,7 +104,7 @@ describe('ResultBanner component', () => {
 
       expect(wrapper.find(StyledTitle).children().text()).toEqual('You are correct!');
       expect(wrapper.find(StyledTitleText).children().text()).toEqual('Well done keep going!');
-      expect(wrapper.find(TickIcon).exists()).toEqual(true);
+      expect(wrapper.find(Icon).props().name).toEqual('tick');
     });
 
     it('should render incorrect ResultBanner when capital incorrect bannerType is passed', () => {
@@ -108,7 +112,7 @@ describe('ResultBanner component', () => {
 
       expect(wrapper.find(StyledTitle).children().text()).toEqual('Correct Solution:');
       expect(wrapper.find(StyledTitleText).children().text()).toEqual('En el tren.');
-      expect(wrapper.find(CrossIcon).exists()).toEqual(true);
+      expect(wrapper.find(Icon).props().name).toEqual('cross');
     });
   });
 });

@@ -3,10 +3,9 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import logo from 'common/icons/logo.png';
 import generateRandomLearningMaterial from 'common/services/generate-random-learning-material';
 
-import ImageBanner from 'components/image-banner/image-banner';
+import Header from 'components/header/header';
 import TestComponent from 'test-component/test-component';
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -33,10 +32,7 @@ ReactDOM.render(
   <Fragment>
     <GlobalStyle />
     <TestComponent componentName={componentName} />
-    <ImageBanner
-      imageUrl={logo}
-      imageAltTag="30 Seconds of Spanish logo"
-    />
+    <Header iconName="logo" />
     {generateRandomLearningMaterial()}
   </Fragment>,
   document.getElementById('root'),

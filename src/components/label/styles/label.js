@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import StyledImage from 'components/image/styles/image';
 import StyledWrapper from 'components/image/styles/wrapper';
 
 const getTextColor = ({ theme }) => theme.colors.slate;
@@ -43,9 +42,14 @@ const getHeight = ({ isImageLabel }) => (
 );
 
 const getAdditionalImageLabelStyles = ({ isImageLabel }) => isImageLabel && `
-  ${StyledImage}, ${StyledWrapper} {
+  ${StyledWrapper} {
     height: 100%;
     width: auto;
+
+    img {
+      height: inherit;
+      width: inherit;
+    }
   }
 `;
 

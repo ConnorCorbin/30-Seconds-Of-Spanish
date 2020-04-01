@@ -5,6 +5,6 @@ exports[`TestComponent should not render TestComponent when componentName is emp
 exports[`TestComponent should render TestComponent component 1`] = `
 <Image
   altTag="30 Seconds of Spanish"
-  url="logo.png"
+  url="https://image.flaticon.com/icons/svg/1530/1530856.svg"
 />
 `;
