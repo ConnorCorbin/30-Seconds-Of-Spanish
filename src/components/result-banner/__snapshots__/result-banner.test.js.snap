@@ -24,7 +24,9 @@ exports[`ResultBanner component Should render correct banner type 1`] = `
     bannerType="correct"
   >
     <styled.div>
-      <ForwardRef(SvgTick) />
+      <Icon
+        name="tick"
+      />
     </styled.div>
     <styled.div>
       <styled.h2>
@@ -62,7 +64,9 @@ exports[`ResultBanner component Should render incorrect banner type 1`] = `
     bannerType="incorrect"
   >
     <styled.div>
-      <ForwardRef(SvgCross) />
+      <Icon
+        name="cross"
+      />
     </styled.div>
     <styled.div>
       <styled.h2>
@@ -102,7 +106,7 @@ exports[`ResultBanner component Should render undecided banner type 1`] = `
     <styled.button
       isActive={false}
     >
-      Check Answer
+      Check Result
     </styled.button>
   </styled.div>
 </ThemeProvider>

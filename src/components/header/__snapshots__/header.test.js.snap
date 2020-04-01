@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should not render Header component 1`] = `""`;
+
+exports[`Header component should render Header component 1`] = `
+<styled.div>
+  <styled.span>
+    <Icon
+      name="logo"
+    />
+  </styled.span>
+</styled.div>
+`;

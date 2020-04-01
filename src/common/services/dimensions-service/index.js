@@ -1,12 +1,6 @@
 import { css } from 'styled-components';
 
-export const getEmFromPx = pxValue => pxValue / 16;
-
-export const SCREEN_SIZES = {
-  SMALL: 'SMALL',
-  MEDIUM: 'MEDIUM',
-  LARGE: 'LARGE',
-};
+const getEmFromPx = pxValue => pxValue / 16;
 
 export const MEDIA_DEFAULTS = {
   MEDIUM: getEmFromPx(480),

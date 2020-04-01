@@ -1,9 +1,7 @@
 import React from 'react';
 
-import logo from 'common/icons/logo.png';
-
 import Image from 'components/image/image';
 
 export default {
-  image: <Image url={logo} altTag="30 Seconds of Spanish" />,
+  image: <Image url="https://image.flaticon.com/icons/svg/1530/1530856.svg" altTag="30 Seconds of Spanish" />,
 };

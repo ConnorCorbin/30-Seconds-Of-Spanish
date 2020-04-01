@@ -1,11 +1,10 @@
-import React, { Fragment, memo } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import theme from 'common/theme';
-import { ReactComponent as CrossIcon } from 'common/icons/cross.svg';
-import { ReactComponent as TickIcon } from 'common/icons/tick.svg';
 
+import Icon from 'components/icon/icon';
 import StyledWrapper from 'components/result-banner/styles/wrapper';
 import StyledButton from 'components/result-banner/styles/button';
 import StyledTitle from 'components/result-banner/styles/title';
@@ -28,7 +27,7 @@ const ResultBanner = ({
   incorrectResultText,
   bannerType = undecided,
   onClickFunction,
-  buttonText,
+  buttonText = 'Check Result',
   isActive = false,
 }) => {
   const validateBannerType = () => {
@@ -39,15 +38,17 @@ const ResultBanner = ({
   };
 
   const getIcon = bannerDesignType => {
-    if (bannerDesignType === undecided) return null;
+    const isUndecidedBanner = bannerDesignType === undecided;
 
-    const icon = bannerDesignType === correct
-      ? <TickIcon />
-      : <CrossIcon />;
+    if (isUndecidedBanner) return null;
+
+    const iconName = bannerDesignType === correct
+      ? 'tick'
+      : 'cross';
 
     return (
       <StyledIconWrapper>
-        {icon}
+        <Icon name={iconName} />
       </StyledIconWrapper>
     );
   };
@@ -100,4 +101,4 @@ ResultBanner.propTypes = {
   isActive: PropTypes.bool,
 };
 
-export default memo(ResultBanner);
+export default ResultBanner;

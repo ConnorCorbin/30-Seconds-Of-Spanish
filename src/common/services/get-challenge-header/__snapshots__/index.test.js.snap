@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GetChallengeHeader service should not return ChallengeHeader component when no parameters are passed in 1`] = `null`;
+exports[`should not return ChallengeHeader component when no parameters are passed in 1`] = `null`;
 
-exports[`GetChallengeHeader service should return ChallengeHeader component with correct props 1`] = `
-<UNDEFINED
+exports[`should return ChallengeHeader component with correct props 1`] = `
+<Memo(ChallengeHeader)
   questionText="Question text"
   questionTitle="Question title"
 />

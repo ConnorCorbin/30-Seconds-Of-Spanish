@@ -58,7 +58,7 @@ exports[`MultipleChoiceQuestion component should render MultipleChoiceQuestion c
       onKeyPressFunction={[Function]}
     />
   </styled.div>
-  <Memo(ResultBanner)
+  <ResultBanner
     bannerType="undecided"
     buttonText="Check Result"
     isActive={false}
