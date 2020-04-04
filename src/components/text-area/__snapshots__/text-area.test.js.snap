@@ -6,13 +6,14 @@ exports[`TextArea component should render TextArea component 1`] = `
     Object {
       "colors": Object {
         "correctBannerBackground": "#b8f28b",
-        "correctBannerText": "#58a700",
         "darkBlue": "#1cb0f6",
         "darkGray": "#e5e5e5",
+        "darkGreen": "#78c800",
         "incorrectBannerBackground": "#ffc1c1",
-        "incorrectBannerText": "#ea2b2b",
         "lightBlue": "#ddf4ff",
         "lightGray": "#f7f7f7",
+        "lightGreen": "#b8f28b",
+        "mediumGreen": "#84dc00",
         "slate": "#323c41",
         "undecidedBannerBackground": "#f5f5f5",
         "white": "#ffffff",

@@ -127,10 +127,10 @@ class TranslateTextQuestion extends Component {
   getCorrectResultBanner = () => {
     const {
       buttonText,
-      correctResultTitle,
-      correctResultText,
-      incorrectResultTitle,
-      incorrectResultText,
+      correctTitle,
+      correctText,
+      incorrectTitle,
+      incorrectText,
       correctAnswer,
     } = this.props;
     const {
@@ -138,28 +138,21 @@ class TranslateTextQuestion extends Component {
       answerStatus,
     } = this.state;
 
-    const undecidedResultBannerProps = {
+    const resultBannerProps = {
+      answerStatus,
+      // Undecided Banner Props
       buttonText,
       isActive: isTextAreaActive,
       onClickFunction: this.onClickButtonHandler(),
+      // Correct Result Banner Props
+      correctTitle,
+      correctText,
+      // Incorrect Result Banner Props
+      incorrectTitle,
+      incorrectText: incorrectText || correctAnswer,
     };
 
-    const correctResultBannerProps = {
-      correctResultTitle,
-      correctResultText,
-    };
-
-    const incorrectResultBannerProps = {
-      incorrectResultTitle,
-      incorrectResultText: incorrectResultText || correctAnswer,
-    };
-
-    return getResultBanner(
-      answerStatus,
-      undecidedResultBannerProps,
-      correctResultBannerProps,
-      incorrectResultBannerProps,
-    );
+    return getResultBanner(resultBannerProps);
   };
 
   getTextArea = (typedInLanguage) => (
@@ -197,10 +190,10 @@ TranslateTextQuestion.propTypes = {
   questionText: PropTypes.string,
   // ResultBanner
   buttonText: PropTypes.string,
-  correctResultTitle: PropTypes.string,
-  correctResultText: PropTypes.string,
-  incorrectResultTitle: PropTypes.string,
-  incorrectResultText: PropTypes.string,
+  correctTitle: PropTypes.string,
+  correctText: PropTypes.string,
+  incorrectTitle: PropTypes.string,
+  incorrectText: PropTypes.string,
 };
 
 export default TranslateTextQuestion;

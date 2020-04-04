@@ -1,17 +1,11 @@
 import React from 'react';
 
+import theme from 'common/theme';
+
 import StyledTextWrapper from 'components/result-banner/styles/text-wrapper';
 
-describe('StyledTextWrapper', () => {
-  const theme = {
-    colors: {
-      slate: '#323c41',
-    },
-  };
+it('should render StyledTextWrapper with correct text color', () => {
+  const wrapper = shallow(<StyledTextWrapper theme={theme} />);
 
-  it('should render StyledTextWrapper with correct font color', () => {
-    const wrapper = shallow(<StyledTextWrapper theme={theme} />);
-
-    expect(wrapper).toHaveStyleRule('color', theme.colors.slate);
-  });
+  expect(wrapper).toHaveStyleRule('color', theme.colors.slate);
 });

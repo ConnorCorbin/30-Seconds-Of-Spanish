@@ -37,20 +37,18 @@ describe('MultipleChoiceQuestion component', () => {
     questionText = 'One, Two, Three!',
     possibleAnswers = possibleAnswersArray,
     buttonText = 'Check Result',
-    correctResultTitle = 'Correct Result!',
-    correctResultText = 'Well Done.',
-    incorrectResultTitle = 'Correct Result:',
-    incorrectResultText,
+    correctTitle = 'Correct Result!',
+    correctText = 'Well Done.',
+    incorrectTitle = 'Correct Result:',
   } = {}) => shallow(
     <MultipleChoiceQuestion
       questionTitle={questionTitle}
       questionText={questionText}
       possibleAnswers={possibleAnswers}
       buttonText={buttonText}
-      correctResultTitle={correctResultTitle}
-      correctResultText={correctResultText}
-      incorrectResultTitle={incorrectResultTitle}
-      incorrectResultText={incorrectResultText}
+      correctTitle={correctTitle}
+      correctText={correctText}
+      incorrectTitle={incorrectTitle}
     />,
   );
 
@@ -133,27 +131,27 @@ describe('MultipleChoiceQuestion component', () => {
     it('should render `undecided` ResultBanner on initial render', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('undecided');
     });
 
     it('should render `correct` ResultBanner when correct answer is clicked', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('undecided');
       wrapper.find(Label).first().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('correct');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('correct');
     });
 
     it('should render `incorrect` ResultBanner when incorrect answer is clicked', () => {
       wrapper = getWrapper();
 
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('undecided');
       wrapper.find(Label).last().dive().find(StyledLabel)
         .simulate('click');
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('incorrect');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('incorrect');
     });
   });
 

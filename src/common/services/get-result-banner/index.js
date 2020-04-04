@@ -1,30 +1,42 @@
 import React from 'react';
 
-import ANSWER_STATUS from 'common/constants/answer-status';
-
 import ResultBanner from 'components/result-banner/result-banner';
 
-const { correct, incorrect, undecided } = ANSWER_STATUS;
+export default (resultBannerProps) => {
+  const {
+    answerStatus,
+    buttonText,
+    isActive,
+    onClickFunction,
+    correctTitle,
+    correctText,
+    incorrectTitle,
+    incorrectText,
+  } = resultBannerProps;
 
-export default (answerStatus, undecidedResultBannerProps, correctResultBannerProps, incorrectResultBannerProps) => {
-  const defaultUndecidedProps = {
-    bannerType: undecided,
+  const undecidedProps = {
+    answerStatus,
+    buttonText,
+    isActive,
+    onClickFunction,
   };
 
-  const defaultCorrectProps = {
-    isAnswerCorrect: true,
-    bannerType: correct,
+  const correctProps = {
+    answerStatus,
+    correctTitle,
+    correctText,
   };
 
-  const defaultIncorrectProps = {
-    isAnswerCorrect: false,
-    bannerType: incorrect,
+  const incorrectProps = {
+    answerStatus,
+    incorrectTitle,
+    incorrectText,
   };
 
   const resultBannerMap = {
-    undecided: { ...undecidedResultBannerProps, ...defaultUndecidedProps },
-    correct: { ...correctResultBannerProps, ...defaultCorrectProps },
-    incorrect: { ...incorrectResultBannerProps, ...defaultIncorrectProps },
+    undecided: undecidedProps,
+    correct: correctProps,
+    incorrect: incorrectProps,
   };
 
   return <ResultBanner {...resultBannerMap[answerStatus]} />;

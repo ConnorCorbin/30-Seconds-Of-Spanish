@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = ({ BABEL_ENV } = { BABEL_ENV: 'development' }) => ({
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, './build'),
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
   module: {
     rules: [
       {

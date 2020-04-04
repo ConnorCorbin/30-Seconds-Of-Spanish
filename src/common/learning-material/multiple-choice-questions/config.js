@@ -1,10 +1,9 @@
 export default {
   defaultProps: {
     questionTitle: 'Mark the correct meaning',
-    correctResultTitle: 'Correct Result!',
-    correctResultText: 'Well Done.',
-    incorrectResultTitle: 'Incorrect. Correct Result is:',
-    incorrectResultText: '',
+    correctTitle: 'Correct Result!',
+    correctText: 'Well Done.',
+    incorrectTitle: 'Incorrect. Correct Result is:',
   },
   questions: [{
     questionText: 'Hello!',
