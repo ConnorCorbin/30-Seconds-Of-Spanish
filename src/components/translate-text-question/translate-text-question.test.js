@@ -14,10 +14,10 @@ describe('TranslateTextQuestion component', () => {
   const getWrapper = ({
     questionTitle = 'Write this in Spanish',
     questionText = '¿Is Juan from Spain?',
-    correctResultTitle = 'You are correct!',
-    correctResultText,
-    incorrectResultTitle = 'Correct Solution:',
-    incorrectResultText = '¿Juan es de Espana?',
+    correctTitle = 'You are correct!',
+    correctText,
+    incorrectTitle = 'Correct Solution:',
+    incorrectText = '¿Juan es de Espana?',
     correctAnswer = 'Juan es de Espana',
     buttonText = 'Check Result',
     typedInLanguage = 'english',
@@ -25,10 +25,10 @@ describe('TranslateTextQuestion component', () => {
     <TranslateTextQuestion
       questionTitle={questionTitle}
       questionText={questionText}
-      correctResultTitle={correctResultTitle}
-      correctResultText={correctResultText}
-      incorrectResultTitle={incorrectResultTitle}
-      incorrectResultText={incorrectResultText}
+      correctTitle={correctTitle}
+      correctText={correctText}
+      incorrectTitle={incorrectTitle}
+      incorrectText={incorrectText}
       correctAnswer={correctAnswer}
       buttonText={buttonText}
       typedInLanguage={typedInLanguage}
@@ -59,13 +59,13 @@ describe('TranslateTextQuestion component', () => {
     expect(wrapper.state('isTextAreaDisabled')).toEqual(false);
   });
 
-  it('should return correct incorrectResultText for ResultBanner if incorrectResultText is undefined', () => {
+  it('should return correct incorrectText for ResultBanner if incorrectText is undefined', () => {
     mockEvent = { target: { value: 'Juan es de' } };
-    wrapper = getWrapper({ incorrectResultText: '' });
+    wrapper = getWrapper({ incorrectText: '' });
 
     wrapper.find(TextArea).dive().find(StyledTextArea).simulate('change', mockEvent);
     wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
-    expect(wrapper.find(ResultBanner).props().incorrectResultText).toEqual('Juan es de Espana');
+    expect(wrapper.find(ResultBanner).props().incorrectText).toEqual('Juan es de Espana');
   });
 
   describe('ChallengeHeader component', () => {
@@ -176,20 +176,20 @@ describe('TranslateTextQuestion component', () => {
       mockEvent = { target: { value: 'Juan es de Espana' } };
       wrapper = getWrapper();
 
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('undecided');
       wrapper.find(TextArea).dive().find(StyledTextArea).simulate('change', mockEvent);
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('correct');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('correct');
     });
 
     it('should render correct ResultBanner when incorrect answer is entered', () => {
       mockEvent = { target: { value: 'Wrong answer' } };
       wrapper = getWrapper();
 
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('undecided');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('undecided');
       wrapper.find(TextArea).dive().find(StyledTextArea).simulate('change', mockEvent);
       wrapper.find(ResultBanner).dive().find(StyledButton).simulate('click');
-      expect(wrapper.find(ResultBanner).props().bannerType).toEqual('incorrect');
+      expect(wrapper.find(ResultBanner).props().answerStatus).toEqual('incorrect');
     });
 
     it('should set correct state values for when answer is correct', () => {

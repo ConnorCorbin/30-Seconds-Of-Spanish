@@ -65,19 +65,16 @@ class MultipleChoiceQuestion extends Component {
     const isSameLabelSelected = index === activeLabelIndex;
 
     if (isEnterKeyPressed && isSameLabelSelected) return this.onClickButtonHandler()();
-
     if (isEnterKeyPressed && !isSameLabelSelected) return this.onClickLabelHandler(index)();
-
     return null;
   };
 
   getCorrectResultBanner = () => {
     const {
       buttonText,
-      correctResultTitle,
-      correctResultText,
-      incorrectResultTitle,
-      incorrectResultText,
+      correctTitle,
+      correctText,
+      incorrectTitle,
     } = this.props;
     const {
       isLabelActive,
@@ -89,28 +86,21 @@ class MultipleChoiceQuestion extends Component {
     const answerSelectedByUser = shuffledPossibleAnswers[indexOfCorrectAnswer];
     const { text } = answerSelectedByUser || {};
 
-    const undecidedResultBannerProps = {
+    const resultBannerProps = {
+      answerStatus,
+      // Undecided Banner Props
       buttonText,
       isActive: isLabelActive,
       onClickFunction: this.onClickButtonHandler(),
+      // Correct Result Banner Props
+      correctTitle,
+      correctText,
+      // Incorrect Result Banner Props
+      incorrectTitle,
+      incorrectText: text,
     };
 
-    const correctResultBannerProps = {
-      correctResultTitle,
-      correctResultText,
-    };
-
-    const incorrectResultBannerProps = {
-      incorrectResultTitle,
-      incorrectResultText: incorrectResultText || text,
-    };
-
-    return getResultBanner(
-      answerStatus,
-      undecidedResultBannerProps,
-      correctResultBannerProps,
-      incorrectResultBannerProps,
-    );
+    return getResultBanner(resultBannerProps);
   };
 
   getPossibleAnswers = () => {
@@ -172,10 +162,9 @@ MultipleChoiceQuestion.propTypes = {
   questionText: PropTypes.string,
   // ResultBanner
   buttonText: PropTypes.string,
-  correctResultTitle: PropTypes.string,
-  correctResultText: PropTypes.string,
-  incorrectResultTitle: PropTypes.string,
-  incorrectResultText: PropTypes.string,
+  correctTitle: PropTypes.string,
+  correctText: PropTypes.string,
+  incorrectTitle: PropTypes.string,
 };
 
 export default MultipleChoiceQuestion;

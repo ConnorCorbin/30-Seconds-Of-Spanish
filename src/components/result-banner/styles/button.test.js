@@ -1,50 +1,44 @@
 import React from 'react';
 
+import theme from 'common/theme';
 import { MEDIA_DEFAULTS } from 'common/services/dimensions-service';
 
 import StyledButton from 'components/result-banner/styles/button';
 
-describe('StyledButton', () => {
-  let wrapper;
-  const modifier = ':hover';
-  const theme = {
-    colors: {
-      slate: '#323c41',
-    },
-  };
+let wrapper;
+const modifier = ':hover';
 
-  it('Should render StyledButton with correct textColor', () => {
-    wrapper = shallow(<StyledButton theme={theme} />);
+it('Should render StyledButton with correct text color', () => {
+  wrapper = shallow(<StyledButton theme={theme} />);
 
-    expect(wrapper).toHaveStyleRule('color', theme.colors.slate);
+  expect(wrapper).toHaveStyleRule('color', theme.colors.slate);
+});
+
+it('should render StyledButton with correct additional active styles', () => {
+  wrapper = shallow(<StyledButton theme={theme} isActive />);
+
+  expect(wrapper).toHaveStyleRule('background', theme.colors.lightGreen);
+  expect(wrapper).toHaveStyleRule(`border', '2px solid ${theme.colors.darkGreen}`);
+  expect(wrapper).toHaveStyleRule('background', theme.colors.mediumGreen, {
+    modifier,
   });
-
-  it('Should render StyledButton with correct additional active styles', () => {
-    wrapper = shallow(<StyledButton theme={theme} isActive />);
-
-    expect(wrapper).toHaveStyleRule('background', '#b8f28b');
-    expect(wrapper).toHaveStyleRule('border', '2px solid #78c800');
-    expect(wrapper).toHaveStyleRule('background', '#84dc00', {
-      modifier,
-    });
-    expect(wrapper).toHaveStyleRule('cursor', 'pointer', {
-      modifier,
-    });
+  expect(wrapper).toHaveStyleRule('cursor', 'pointer', {
+    modifier,
   });
+});
 
-  it('Should render StyledButton with correct additional disabled styles', () => {
-    wrapper = shallow(<StyledButton theme={theme} isActive={false} />);
+it('should render StyledButton with correct additional disabled styles', () => {
+  wrapper = shallow(<StyledButton theme={theme} isActive={false} />);
 
-    expect(wrapper).toHaveStyleRule('background', '#e5e5e5');
-    expect(wrapper).toHaveStyleRule('border', `2px solid ${theme.colors.slate}`);
-    expect(wrapper).toHaveStyleRule('pointer-events', 'none');
-  });
+  expect(wrapper).toHaveStyleRule('background', theme.colors.darkGray);
+  expect(wrapper).toHaveStyleRule('border', `2px solid ${theme.colors.slate}`);
+  expect(wrapper).toHaveStyleRule('pointer-events', 'none');
+});
 
-  it('Should render StyledButton with correct width at LARGE breakpoint', () => {
-    wrapper = shallow(<StyledButton theme={theme} isActive />);
+it('should render StyledButton with correct width at LARGE breakpoint', () => {
+  wrapper = shallow(<StyledButton theme={theme} isActive />);
 
-    expect(wrapper).toHaveStyleRule('max-width', '800px', {
-      media: `(min-width:${MEDIA_DEFAULTS.LARGE}em)`,
-    });
+  expect(wrapper).toHaveStyleRule('max-width', '800px', {
+    media: `(min-width:${MEDIA_DEFAULTS.LARGE}em)`,
   });
 });

@@ -1,61 +1,39 @@
 import React from 'react';
 
-import getResultBanner from 'common/services/get-result-banner/index';
+import getResultBanner from 'common/services/get-result-banner';
 
 import ResultBanner from 'components/result-banner/result-banner';
 
-describe('GetResultBanner service', () => {
-  let functionParameters;
-  const defaultUndecidedProps = {
-    bannerType: 'undecided',
-  };
+const undecidedProps = {
+  buttonText: 'Check answer',
+  isActive: true,
+  onClickFunction: () => {},
+};
 
-  const defaultCorrectProps = {
-    isAnswerCorrect: true,
-    bannerType: 'correct',
-  };
+const correctProps = {
+  correctTitle: 'Correct title',
+  correctText: 'Correct text',
+};
 
-  const defaultIncorrectProps = {
-    isAnswerCorrect: false,
-    bannerType: 'incorrect',
-  };
+const incorrectProps = {
+  incorrectTitle: 'Incorrect title',
+  incorrectText: 'Incorrect text',
+};
 
-  const undecidedResultBannerProps = {
-    buttonText: 'Button text',
-    isActive: true,
-    onClickFunction: () => {},
-  };
+const resultBannerMap = {
+  undecided: { ...undecidedProps, answerStatus: 'undecided' },
+  correct: { ...correctProps, answerStatus: 'correct' },
+  incorrect: { ...incorrectProps, answerStatus: 'incorrect' },
+};
 
-  const correctResultBannerProps = {
-    correctResultTitle: 'Correct result title',
-    correctResultText: 'Correct result text',
-  };
+const props = { ...undecidedProps, ...correctProps, ...incorrectProps };
 
-  const incorrectResultBannerProps = {
-    incorrectResultTitle: 'Incorrect title title',
-    incorrectResultText: 'Incorrect result text',
-  };
-
-  const resultBannerMap = {
-    undecided: { ...undecidedResultBannerProps, ...defaultUndecidedProps },
-    correct: { ...correctResultBannerProps, ...defaultCorrectProps },
-    incorrect: { ...incorrectResultBannerProps, ...defaultIncorrectProps },
-  };
-
-  ['undecided', 'correct', 'incorrect'].forEach((answerStatus) => {
-    it(`should return ${answerStatus} ResultBanner with correct props when answerStatus is ${answerStatus}`, () => {
-      functionParameters = [
-        answerStatus,
-        undecidedResultBannerProps,
-        correctResultBannerProps,
-        incorrectResultBannerProps,
-      ];
-
-      expect(getResultBanner(...functionParameters)).toEqual(
-        <ResultBanner
-          {...resultBannerMap[answerStatus]}
-        />,
-      );
-    });
+['undecided', 'correct', 'incorrect'].forEach((answerStatus) => {
+  it(`should return ${answerStatus} ResultBanner with correct props when answerStatus is ${answerStatus}`, () => {
+    expect(getResultBanner({ ...props, answerStatus })).toEqual(
+      <ResultBanner
+        {...resultBannerMap[answerStatus]}
+      />,
+    );
   });
 });

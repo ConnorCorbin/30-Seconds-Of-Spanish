@@ -1,13 +1,21 @@
 import styled, { css } from 'styled-components';
 
-const getBackgroundColor = ({ theme, bannerType }) => theme.colors[`${bannerType}BannerBackground`];
+import ANSWER_STATUS from 'common/constants/answer-status';
 
-const getAdditionalStyles = ({ bannerType }) => bannerType === 'undecided' && `
-  justify-content: center;
-  align-items: center;
-`;
+const { undecided } = ANSWER_STATUS;
 
-const getCorrectCursor = ({ bannerType }) => bannerType !== 'undecided' && 'cursor: default;';
+const getBackgroundColor = ({ theme, answerStatus }) => theme.colors[`${answerStatus}BannerBackground`];
+
+const getAdditionalStyles = ({ answerStatus }) => {
+  const isUndecidedAnswerStatus = answerStatus === undecided;
+
+  if (isUndecidedAnswerStatus) return `
+    justify-content: center;
+    align-items: center;
+  `;
+
+  return 'cursor: default;';
+};
 
 const baseStyles = css`
   background-color: ${getBackgroundColor};
@@ -22,5 +30,4 @@ const baseStyles = css`
 export default styled.div`
   ${baseStyles}
   ${getAdditionalStyles}
-  ${getCorrectCursor}
 `;

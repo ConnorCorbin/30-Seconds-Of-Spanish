@@ -23,7 +23,6 @@ Consumed components:
 | questionTitle | `string` | ChallengeHeader | | Title of the question |
 | questionText | `string` | ChallengeHeader | | text containing the question |
 | buttonText | `string` | ResultBanner | | Text for undecided result banner button |
-| correctResultTitle | `string` | ResultBanner | | Correct answer title for correct result banner |
-| correctResultText | `string` | ResultBanner | | Correct answer text for correct result banner |
-| incorrectResultTitle | `string` | ResultBanner | | Incorrect answer title for incorrect result banner |
-| incorrectResultText | `string` | ResultBanner | | Incorrect answer text for incorrect result banner |
+| correctTitle | `string` | ResultBanner | | Correct answer title for correct result banner |
+| correctText | `string` | ResultBanner | | Correct answer text for correct result banner |
+| incorrectTitle | `string` | ResultBanner | | Incorrect answer title for incorrect result banner |

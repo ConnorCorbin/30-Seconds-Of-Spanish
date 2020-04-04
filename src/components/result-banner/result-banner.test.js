@@ -1,53 +1,58 @@
 import React from 'react';
 
+import ANSWER_STATUS from 'common/constants/answer-status';
+
 import ResultBanner from 'components/result-banner/result-banner';
 import Icon from 'components/icon/icon';
 import StyledTitle from 'components/result-banner/styles/title';
 import StyledTitleText from 'components/result-banner/styles/title-text';
 import StyledButton from 'components/result-banner/styles/button';
 
+const { undecided, correct, incorrect } = ANSWER_STATUS;
+
 describe('ResultBanner component', () => {
   let wrapper;
   const getWrapper = ({
-    correctResultTitle = 'You are correct!',
-    correctResultText = 'Well done keep going!',
-    incorrectResultTitle = 'Correct Solution:',
-    incorrectResultText = 'En el tren.',
-    bannerType,
+    correctTitle = 'You are correct!',
+    correctText = 'Well done keep going!',
+    incorrectTitle = 'Correct Solution:',
+    incorrectText = 'En el tren.',
+    answerStatus,
     onClickFunction,
     buttonText,
     isActive,
   } = {}) => shallow(
     <ResultBanner
-      correctResultTitle={correctResultTitle}
-      correctResultText={correctResultText}
-      incorrectResultTitle={incorrectResultTitle}
-      incorrectResultText={incorrectResultText}
-      bannerType={bannerType}
+      correctTitle={correctTitle}
+      correctText={correctText}
+      incorrectTitle={incorrectTitle}
+      incorrectText={incorrectText}
+      answerStatus={answerStatus}
       onClickFunction={onClickFunction}
       buttonText={buttonText}
       isActive={isActive}
     />,
   );
 
-  ['correct', 'incorrect', 'undecided'].forEach((bannerType) => {
-    it(`Should render ${bannerType} banner type`, () => {
-      wrapper = getWrapper({ bannerType });
+  [undecided, correct, incorrect].forEach((answerStatus) => {
+    it(`Should render ${answerStatus} banner type`, () => {
+      wrapper = getWrapper({ answerStatus });
 
       expect(wrapper.isEmptyRender()).toEqual(false);
       expect(wrapper).toMatchSnapshot();
     });
   });
 
-  it('should render ResultBanner with correct default button text', () => {
-    wrapper = getWrapper({ buttonText: 'Check now!' });
+  it('should render ResultBanner with correct default passed in button text', () => {
+    const buttonText = 'Check if you are correct!';
+    wrapper = getWrapper({ buttonText });
 
-    expect(wrapper.find(StyledButton).children().text()).toEqual('Check now!');
+    expect(wrapper.find(StyledButton).children().text()).toEqual(buttonText);
   });
 
   describe('Undecided ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ bannerType: 'undecided' });
+      wrapper = getWrapper({ answerStatus: undecided });
     });
 
     it('should render undecided ResultBanner with button', () => {
@@ -61,7 +66,7 @@ describe('ResultBanner component', () => {
 
   describe('Correct ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ bannerType: 'correct' });
+      wrapper = getWrapper({ answerStatus: correct });
     });
 
     it('should render correct ResultBanner with correct', () => {
@@ -76,7 +81,7 @@ describe('ResultBanner component', () => {
 
   describe('Incorrect ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ bannerType: 'incorrect' });
+      wrapper = getWrapper({ answerStatus: incorrect });
     });
 
     it('should render incorrect ResultBanner with correct', () => {
@@ -89,26 +94,26 @@ describe('ResultBanner component', () => {
     });
   });
 
-  describe('Invalid bannerType input', () => {
-    ['Something', '', undefined].forEach((bannerType) => {
-      it(`should render undecided ResultBanner with ${bannerType} bannerType input`, () => {
-        wrapper = getWrapper({ bannerType });
+  describe('Invalid answerStatus input', () => {
+    ['Something', '', undefined].forEach((answerStatus) => {
+      it(`should render undecided ResultBanner with ${answerStatus} answerStatus input`, () => {
+        wrapper = getWrapper({ answerStatus });
 
         expect(wrapper.find(StyledButton).exists()).toEqual(true);
         expect(wrapper.find(StyledButton).children().text()).toEqual('Check Result');
       });
     });
 
-    it('should render correct ResultBanner when capital correct bannerType is passed', () => {
-      wrapper = getWrapper({ bannerType: 'CoRRect' });
+    it('should render correct ResultBanner when capital correct answerStatus is passed', () => {
+      wrapper = getWrapper({ answerStatus: 'CoRRect' });
 
       expect(wrapper.find(StyledTitle).children().text()).toEqual('You are correct!');
       expect(wrapper.find(StyledTitleText).children().text()).toEqual('Well done keep going!');
       expect(wrapper.find(Icon).props().name).toEqual('tick');
     });
 
-    it('should render incorrect ResultBanner when capital incorrect bannerType is passed', () => {
-      wrapper = getWrapper({ bannerType: 'INCoRRect' });
+    it('should render incorrect ResultBanner when capital incorrect answerStatus is passed', () => {
+      wrapper = getWrapper({ answerStatus: 'INCoRRect' });
 
       expect(wrapper.find(StyledTitle).children().text()).toEqual('Correct Solution:');
       expect(wrapper.find(StyledTitleText).children().text()).toEqual('En el tren.');

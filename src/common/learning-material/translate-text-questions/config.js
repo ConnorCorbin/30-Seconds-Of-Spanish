@@ -1,7 +1,7 @@
 export default {
   defaultProps: {
-    incorrectResultTitle: 'Incorrect. Correct answer is:',
-    correctResultTitle: 'You are correct!',
+    incorrectTitle: 'Incorrect. Correct answer is:',
+    correctTitle: 'You are correct!',
   },
   spanishProps: {
     typedInLanguage: 'spanish',

@@ -3,19 +3,23 @@ import styled, { css } from 'styled-components';
 import media from 'common/services/dimensions-service';
 
 const getSlateColor = ({ theme }) => theme.colors.slate;
+const getDarkGrayColor = ({ theme }) => theme.colors.darkGray;
+const getLightGreenColor = ({ theme }) => theme.colors.lightGreen;
+const getMediumGreenColor = ({ theme }) => theme.colors.mediumGreen;
+const getDarkGreenColor = ({ theme }) => theme.colors.darkGreen;
 
 const getActiveStyles = () => css`
-  background: #b8f28b;
-  border: 2px solid #78c800;
+  background: ${getLightGreenColor};
+  border: 2px solid ${getDarkGreenColor};
 
   :hover {
-    background: #84dc00;
+    background: ${getMediumGreenColor};
     cursor: pointer;
   }
 `;
 
 const getDisabledStyles = () => css`
-  background: #e5e5e5;
+  background: ${getDarkGrayColor};
   border: 2px solid ${getSlateColor};
   pointer-events: none;
 `;

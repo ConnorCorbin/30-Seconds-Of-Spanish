@@ -4,12 +4,6 @@ const common = require('./webpack.common.js');
 
 module.exports = env => merge(common(env), {
   mode: 'development',
-  entry: ['./src/index.js'],
-  output: {
-    path: `${__dirname}/build`,
-    publicPath: '/',
-    filename: 'bundle.js',
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
