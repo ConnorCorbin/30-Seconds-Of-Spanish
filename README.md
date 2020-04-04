@@ -1,5 +1,5 @@
 <div align="center">
-  <img width=300 src="./src/common/icons/logo.png"/>
+  <img width=300 src="./src/common/icons/svg/logo.svg"/>
 </div>
 
 ------
@@ -127,17 +127,17 @@ The current folder structure will look like the following:
   ```javascript
   module.exports = [{
     label: 'AppleBanner',
-    url: 'http://localhost:3000/?component=AppleBanner',
+    url: 'http://localhost:8080/?component=AppleBanner',
     selectors: ['#root'],
     misMatchThreshold: 0,
   }, {
     label: 'BananaBanner-1',
-    url: 'http://localhost:3000/?component=BananaBanner-1',
+    url: 'http://localhost:8080/?component=BananaBanner-1',
     selectors: ['#root'],
     misMatchThreshold: 0,
   }, {
     label: 'BananaBanner-2',
-    url: 'http://localhost:3000/?component=BananaBanner-2',
+    url: 'http://localhost:8080/?component=BananaBanner-2',
     selectors: ['#root'],
     misMatchThreshold: 0,
   }]
