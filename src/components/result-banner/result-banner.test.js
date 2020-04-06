@@ -43,11 +43,33 @@ describe('ResultBanner component', () => {
     });
   });
 
-  it('should render ResultBanner with correct default passed in button text', () => {
-    const buttonText = 'Check if you are correct!';
-    wrapper = getWrapper({ buttonText });
+  describe('Button', () => {
+    it('should render ResultBanner with correct default button text', () => {
+      wrapper = getWrapper();
 
-    expect(wrapper.find(StyledButton).children().text()).toEqual(buttonText);
+      expect(wrapper.find(StyledButton).children().text()).toEqual('Check Result');
+    });
+
+    it('should render ResultBanner with correct passed in button text', () => {
+      const buttonText = 'Check if you are correct!';
+      wrapper = getWrapper({ buttonText });
+
+      expect(wrapper.find(StyledButton).children().text()).toEqual(buttonText);
+    });
+  });
+
+  describe('Text content', () => {
+    it('should not render StyledTitle if not passed in', () => {
+      wrapper = getWrapper({ correctTitle: undefined });
+
+      expect(wrapper.find(StyledTitle).exists()).toEqual(false);
+    });
+
+    it('should not render StyledTitleText if not passed in', () => {
+      wrapper = getWrapper({ correctText: undefined });
+
+      expect(wrapper.find(StyledTitleText).exists()).toEqual(false);
+    });
   });
 
   describe('Undecided ResultBanner', () => {

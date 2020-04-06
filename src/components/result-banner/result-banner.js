@@ -50,7 +50,7 @@ const ResultBanner = ({
 
   const getText = (title, text) => (
     <Fragment>
-      {text && <StyledTitle>{title}</StyledTitle>}
+      {title && <StyledTitle>{title}</StyledTitle>}
       {text && <StyledTitleText>{text}</StyledTitleText>}
     </Fragment>
   );
