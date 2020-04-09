@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from 'components/header/header';
+import Icon from 'components/icon/icon';
 import StyledIcon from 'components/header/styles/icon';
 
 describe('Header component', () => {
@@ -13,23 +14,24 @@ describe('Header component', () => {
     />,
   );
 
-  it('should render Header component', () => {
+  it('should render component', () => {
     wrapper = getWrapper();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it('should not render Header component', () => {
+  it('should not render component when no icon name is passed in', () => {
     wrapper = getWrapper({ iconName: '' });
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
-  it('should render Header component with icon', () => {
+  it('should render component with correct icon', () => {
     wrapper = getWrapper();
 
     expect(wrapper.find(StyledIcon).exists()).toEqual(true);
+    expect(wrapper.find(Icon).props().name).toEqual('logo');
   });
 });

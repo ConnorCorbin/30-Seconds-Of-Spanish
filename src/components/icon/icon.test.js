@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from 'components/icon/icon';
 
 jest.mock('common/icons', () => ({
-  logo: () => (<svg>something</svg>),
+  logo: () => (<svg>Passed in Icon</svg>),
 }));
 
 let wrapper;
@@ -11,7 +11,7 @@ let wrapper;
 it('should return correct react component which renders icon', () => {
   wrapper = shallow(<Icon name="logo" />);
 
-  expect(wrapper.html()).toEqual('<svg>something</svg>');
+  expect(wrapper.html()).toEqual('<svg>Passed in Icon</svg>');
 });
 
 it('should not render anything if no icon found', () => {

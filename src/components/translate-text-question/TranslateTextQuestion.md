@@ -7,7 +7,6 @@ Translate Text Question features:
 
 Consumed components:
 
-* TranslateTextQuestion
 * ChallengeHeader
 * ResultBanner
 
@@ -15,8 +14,8 @@ Consumed components:
 
 | Configurable Fields | Type | Component | Default | Description |
 | ------------------- | ---- | --------- | ------- | ----------- |
-| correctAnswer | `string` | MultipleChoiceQuestion | | The correct answer for the question |
-| typedInLanguage | `string` | MultipleChoiceQuestion | | Value used for `lang` textarea attribute. Restricted values: `spanish`, `english` |
+| correctAnswer | `string` | TranslateTextQuestion | | The correct answer for the question |
+| typedInLanguage | `string` | TranslateTextQuestion | | Value used for `lang` textarea attribute. Restricted values: `spanish`, `english` |
 | questionTitle | `string` | ChallengeHeader | | Title of the question |
 | questionText | `string` | ChallengeHeader | | text containing the question |
 | buttonText | `string` | ResultBanner | | Text for undecided result banner button |

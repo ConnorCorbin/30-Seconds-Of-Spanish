@@ -1,14 +1,12 @@
 import React from 'react';
 
-import ANSWER_STATUS from 'common/constants/answer-status';
 import theme from 'common/theme';
 
 import StyledWrapper from 'components/result-banner/styles/wrapper';
 
 let wrapper;
-const { undecided, correct, incorrect } = ANSWER_STATUS;
 
-[undecided, correct, incorrect].forEach((answerStatus) => {
+['undecided', 'correct', 'incorrect'].forEach((answerStatus) => {
   it(`should render StyledWrapper with the correct background color for ${answerStatus} banner type`, () => {
     wrapper = shallow(<StyledWrapper theme={theme} answerStatus={answerStatus} />);
 
@@ -16,7 +14,7 @@ const { undecided, correct, incorrect } = ANSWER_STATUS;
   });
 });
 
-[correct, incorrect].forEach((answerStatus) => {
+['correct', 'incorrect'].forEach((answerStatus) => {
   it(`should render StyledWrapper with the correct cursor for ${answerStatus} banner type`, () => {
     wrapper = shallow(<StyledWrapper theme={theme} answerStatus={answerStatus} />);
 
@@ -25,12 +23,12 @@ const { undecided, correct, incorrect } = ANSWER_STATUS;
 });
 
 it('should render StyledWrapper with no cursor for undecided banner type', () => {
-  wrapper = shallow(<StyledWrapper theme={theme} answerStatus={undecided} />);
+  wrapper = shallow(<StyledWrapper theme={theme} answerStatus="undecided" />);
 
   expect(wrapper).not.toHaveStyleRule('cursor');
 });
 
-[correct, incorrect].forEach((answerStatus) => {
+['correct', 'incorrect'].forEach((answerStatus) => {
   it(`should render StyledWrapper without additional styles for ${answerStatus} banner type`, () => {
     wrapper = shallow(<StyledWrapper theme={theme} answerStatus={answerStatus} />);
 
@@ -40,7 +38,7 @@ it('should render StyledWrapper with no cursor for undecided banner type', () =>
 });
 
 it('should render StyledWrapper with additional styles for undecided banner type', () => {
-  wrapper = shallow(<StyledWrapper theme={theme} answerStatus={undecided} />);
+  wrapper = shallow(<StyledWrapper theme={theme} answerStatus="undecided" />);
 
   expect(wrapper).toHaveStyleRule('justify-content', 'center');
   expect(wrapper).toHaveStyleRule('align-items', 'center');

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image component should not render Image component 1`] = `""`;
+exports[`Image component should not render component 1`] = `""`;
 
-exports[`Image component should render Image component 1`] = `
+exports[`Image component should render component 1`] = `
 <styled.div>
-  <img
+  <styled.img
     alt="Image alt tag"
     src="Image URL"
   />

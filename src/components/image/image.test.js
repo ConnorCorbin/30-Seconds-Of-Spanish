@@ -2,6 +2,8 @@ import React from 'react';
 
 import Image from 'components/image/image';
 
+import StyledImage from 'components/image/styles/image';
+
 describe('Image component', () => {
   let wrapper;
   const getWrapper = ({
@@ -14,29 +16,29 @@ describe('Image component', () => {
     />,
   );
 
-  it('should render Image component', () => {
+  it('should render component', () => {
     wrapper = getWrapper();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it('should not render Image component', () => {
+  it('should not render component', () => {
     wrapper = getWrapper({ url: '' });
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
-  it('should render Image component with correct image URL', () => {
+  it('should render component with correct image URL', () => {
     wrapper = getWrapper();
 
-    expect(wrapper.find('img').props().src).toEqual('Image URL');
+    expect(wrapper.find(StyledImage).props().src).toEqual('Image URL');
   });
 
-  it('should render Image component with correct image alt tag', () => {
+  it('should render component with correct image alt tag', () => {
     wrapper = getWrapper();
 
-    expect(wrapper.find('img').props().alt).toEqual('Image alt tag');
+    expect(wrapper.find(StyledImage).props().alt).toEqual('Image alt tag');
   });
 });

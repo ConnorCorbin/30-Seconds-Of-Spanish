@@ -35,21 +35,21 @@ describe('TranslateTextQuestion component', () => {
     />,
   );
 
-  it('should render TranslateTextQuestion component', () => {
+  it('should render component', () => {
     wrapper = getWrapper();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it('should not render TranslateTextQuestion component', () => {
+  it('should not render component', () => {
     wrapper = getWrapper({ questionTitle: '', questionText: '' });
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
-  it('should render TranslateTextQuestion component with correct initial state values', () => {
+  it('should render component with correct initial state values', () => {
     wrapper = getWrapper();
 
     expect(wrapper.state('userInput')).toEqual('');
@@ -69,7 +69,7 @@ describe('TranslateTextQuestion component', () => {
   });
 
   describe('ChallengeHeader component', () => {
-    it('should render TranslateTextQuestion component with correct props for ChallengeHeader component', () => {
+    it('should render component with correct props for ChallengeHeader component', () => {
       wrapper = getWrapper();
 
       expect(wrapper.contains(

@@ -1,14 +1,10 @@
 import React from 'react';
 
-import ANSWER_STATUS from 'common/constants/answer-status';
-
 import ResultBanner from 'components/result-banner/result-banner';
 import Icon from 'components/icon/icon';
 import StyledTitle from 'components/result-banner/styles/title';
 import StyledTitleText from 'components/result-banner/styles/title-text';
 import StyledButton from 'components/result-banner/styles/button';
-
-const { undecided, correct, incorrect } = ANSWER_STATUS;
 
 describe('ResultBanner component', () => {
   let wrapper;
@@ -34,7 +30,7 @@ describe('ResultBanner component', () => {
     />,
   );
 
-  [undecided, correct, incorrect].forEach((answerStatus) => {
+  ['undecided', 'correct', 'incorrect'].forEach((answerStatus) => {
     it(`Should render ${answerStatus} banner type`, () => {
       wrapper = getWrapper({ answerStatus });
 
@@ -60,13 +56,13 @@ describe('ResultBanner component', () => {
 
   describe('Text content', () => {
     it('should not render StyledTitle if not passed in', () => {
-      wrapper = getWrapper({ correctTitle: undefined });
+      wrapper = getWrapper({ correctTitle: '' });
 
       expect(wrapper.find(StyledTitle).exists()).toEqual(false);
     });
 
     it('should not render StyledTitleText if not passed in', () => {
-      wrapper = getWrapper({ correctText: undefined });
+      wrapper = getWrapper({ correctText: '' });
 
       expect(wrapper.find(StyledTitleText).exists()).toEqual(false);
     });
@@ -74,7 +70,7 @@ describe('ResultBanner component', () => {
 
   describe('Undecided ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ answerStatus: undecided });
+      wrapper = getWrapper({ answerStatus: 'undecided' });
     });
 
     it('should render undecided ResultBanner with button', () => {
@@ -88,7 +84,7 @@ describe('ResultBanner component', () => {
 
   describe('Correct ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ answerStatus: correct });
+      wrapper = getWrapper({ answerStatus: 'correct' });
     });
 
     it('should render correct ResultBanner with correct', () => {
@@ -103,7 +99,7 @@ describe('ResultBanner component', () => {
 
   describe('Incorrect ResultBanner', () => {
     beforeEach(() => {
-      wrapper = getWrapper({ answerStatus: incorrect });
+      wrapper = getWrapper({ answerStatus: 'incorrect' });
     });
 
     it('should render incorrect ResultBanner with correct', () => {

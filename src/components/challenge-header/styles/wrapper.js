@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import media from 'common/services/dimensions-service';
 
-const getTextColor = ({ theme }) => theme.colors.slate;
+const getTextColor = ({ theme }) => theme.colors.text;
 
 const baseStyles = css`
   color: ${getTextColor};

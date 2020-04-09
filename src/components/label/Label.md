@@ -4,7 +4,7 @@ Label features:
 
 * Render text label containing only text
 * Render image label containing image and text
-* Pass both onClick and onKeyPress functions to execute when onClick and onKeyPress event is fired
+* Pass both onClick and onKeyPress functions to execute when onClick or onKeyPress event is fired
 
 Consumed components:
 
