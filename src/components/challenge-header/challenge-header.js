@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
@@ -41,4 +41,4 @@ ChallengeHeader.propTypes = {
   questionText: PropTypes.string,
 };
 
-export default memo(ChallengeHeader);
+export default ChallengeHeader;

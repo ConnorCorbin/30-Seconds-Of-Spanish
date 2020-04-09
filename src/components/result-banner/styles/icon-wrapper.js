@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const getBackgroundColor = ({ theme }) => theme.colors.white;
+const getIconBackgroundColor = ({ theme }) => theme.colors.iconBackground;
 
 export default styled.div`
   align-items: center;
-  background: ${getBackgroundColor};
+  background: ${getIconBackgroundColor};
   border-radius: 50%;
   display: flex;
   height: 80px;

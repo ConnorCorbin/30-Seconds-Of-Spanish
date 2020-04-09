@@ -5,57 +5,101 @@ import StyledTextArea from 'components/text-area/styles/text-area';
 
 describe('TextArea component', () => {
   let wrapper;
-  let expected;
-  const spanishPlaceholderText = 'Type in Spanish';
-  const englishPlaceholderText = 'Type in English';
+  let mockFunction;
 
-  it('should render TextArea component', () => {
+  it('should render component', () => {
     wrapper = shallow(<TextArea />);
 
     expect(wrapper.isEmptyRender()).toEqual(false);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render TextArea component with correct default textarea attributes', () => {
-    wrapper = shallow(<TextArea />);
+  describe('Placeholder prop', () => {
+    it('should render component with correct placeholder prop value when spanish is passed infor language prop', () => {
+      wrapper = shallow(<TextArea language="spanish" />);
 
-    expected = {
-      autoCorrect: 'off',
-      spellCheck: 'false',
-      autoCapitalize: 'none',
-      dir: 'ltr',
-      lang: 'es',
-      placeholder: spanishPlaceholderText,
-    };
+      expect(wrapper.find(StyledTextArea).props().placeholder).toEqual('Type in Spanish');
+    });
 
-    expect(wrapper.find(StyledTextArea).props()).toMatchObject(expected);
+    it('should render component with correct placeholder prop value when english is passed in for language prop', () => {
+      wrapper = shallow(<TextArea language="english" />);
+
+      expect(wrapper.find(StyledTextArea).props().placeholder).toEqual('Type in English');
+    });
+
+    it('should render component with correct placeholder prop value when invalid value passed in for language prop', () => {
+      wrapper = shallow(<TextArea language="german" />);
+
+      expect(wrapper.find(StyledTextArea).props().placeholder).toEqual('Type in Spanish');
+    });
   });
 
-  it('should render TextArea component with correct textarea attributes when `english` is passed for language', () => {
-    wrapper = shallow(<TextArea language="english" />);
+  describe('Lang prop', () => {
+    it('should render component with correct lang prop value when spanish is passed in for language prop', () => {
+      wrapper = shallow(<TextArea language="spanish" />);
 
-    expected = {
-      lang: 'en',
-      placeholder: englishPlaceholderText,
-    };
+      expect(wrapper.find(StyledTextArea).props().lang).toEqual('es');
+    });
 
-    expect(wrapper.find(StyledTextArea).props()).toMatchObject(expected);
+    it('should render component with correct lang prop value when english is passed in for language prop', () => {
+      wrapper = shallow(<TextArea language="english" />);
+
+      expect(wrapper.find(StyledTextArea).props().lang).toEqual('en');
+    });
+
+    it('should render component with correct lang prop value when invalid value passed in for language prop', () => {
+      wrapper = shallow(<TextArea language="german" />);
+
+      expect(wrapper.find(StyledTextArea).props().lang).toEqual('es');
+    });
   });
 
-  it('should render TextArea component with correct attributes when `spanish` is passed for language', () => {
-    wrapper = shallow(<TextArea language="spanish" />);
+  describe('Default props', () => {
+    it('should render component with correct lang prop value when spanish is passed in for language prop', () => {
+      wrapper = shallow(<TextArea />);
 
-    expected = {
-      lang: 'es',
-      placeholder: spanishPlaceholderText,
-    };
-
-    expect(wrapper.find(StyledTextArea).props()).toMatchObject(expected);
+      expect(wrapper.find(StyledTextArea).props()).toMatchObject({
+        autoCorrect: 'off',
+        spellCheck: 'false',
+        autoCapitalize: 'none',
+        dir: 'ltr',
+        unselectable: 'on',
+      });
+    });
   });
 
-  it('should render TextArea component with correct language textarea attribute when invalid language entered', () => {
-    wrapper = shallow(<TextArea language="german" />);
+  describe('Disabled prop', () => {
+    it('should render component with correct default prop when true is passed in', () => {
+      wrapper = shallow(<TextArea isTextAreaDisabled />);
 
-    expect(wrapper.find(StyledTextArea).props().lang).toEqual('es');
+      expect(wrapper.find(StyledTextArea).props().disabled).toEqual(true);
+    });
+
+    it('should render component with correct default prop when false is passed in', () => {
+      wrapper = shallow(<TextArea isTextAreaDisabled={false} />);
+
+      expect(wrapper.find(StyledTextArea).props().disabled).toEqual(false);
+    });
+  });
+
+  it('should execute onChangeFunction when StyledTextArea onClick event is fired', () => {
+    mockFunction = jest.fn();
+    wrapper = shallow(<TextArea onChangeFunction={mockFunction} />);
+
+    expect(mockFunction).not.toHaveBeenCalledWith();
+    wrapper.find(StyledTextArea).simulate('change', {
+      target: { value: 'Typed in text for areatext' },
+      preventDefault: jest.fn(),
+    });
+    expect(mockFunction).toHaveBeenCalledTimes(1);
+  });
+
+  it('should execute onKeyPressFunction when StyledTextArea onKeyPress event is fired', () => {
+    mockFunction = jest.fn();
+    wrapper = shallow(<TextArea onKeyPressFunction={mockFunction} />);
+
+    expect(mockFunction).toHaveBeenCalledTimes(0);
+    wrapper.find(StyledTextArea).simulate('keypress', { charCode: 29 });
+    expect(mockFunction).toHaveBeenCalledTimes(1);
   });
 });

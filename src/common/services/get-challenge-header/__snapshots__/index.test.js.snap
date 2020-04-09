@@ -3,7 +3,7 @@
 exports[`should not return ChallengeHeader component when no parameters are passed in 1`] = `null`;
 
 exports[`should return ChallengeHeader component with correct props 1`] = `
-<Memo(ChallengeHeader)
+<ChallengeHeader
   questionText="Question text"
   questionTitle="Question title"
 />

@@ -12,4 +12,4 @@ Consumed components:
 
 | Configurable Fields | Type | Component | Default | Description |
 | ------------------- | ---- | --------- | ------- | ----------- |
-| iconName | `string` | Image | | Name of the icon |
+| iconName | `string` | Header | | Name of the icon |

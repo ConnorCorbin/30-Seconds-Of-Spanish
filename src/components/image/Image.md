@@ -3,6 +3,7 @@
 Image features:
 
 * Renders Image
+* Set image alt tag
 
 Consumed components:
 

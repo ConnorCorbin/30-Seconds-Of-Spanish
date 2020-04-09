@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from 'components/icon/icon';
@@ -23,4 +23,4 @@ Header.propTypes = {
   iconName: PropTypes.string,
 };
 
-export default memo(Header);
+export default Header;

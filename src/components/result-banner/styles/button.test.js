@@ -11,15 +11,15 @@ const modifier = ':hover';
 it('Should render StyledButton with correct text color', () => {
   wrapper = shallow(<StyledButton theme={theme} />);
 
-  expect(wrapper).toHaveStyleRule('color', theme.colors.slate);
+  expect(wrapper).toHaveStyleRule('color', theme.colors.text);
 });
 
 it('should render StyledButton with correct additional active styles', () => {
   wrapper = shallow(<StyledButton theme={theme} isActive />);
 
-  expect(wrapper).toHaveStyleRule('background', theme.colors.lightGreen);
-  expect(wrapper).toHaveStyleRule(`border', '2px solid ${theme.colors.darkGreen}`);
-  expect(wrapper).toHaveStyleRule('background', theme.colors.mediumGreen, {
+  expect(wrapper).toHaveStyleRule('background', theme.colors.activeButtonBackground);
+  expect(wrapper).toHaveStyleRule(`border', '2px solid ${theme.colors.activeButtonBorder}`);
+  expect(wrapper).toHaveStyleRule('background', theme.colors.activeButtonHover, {
     modifier,
   });
   expect(wrapper).toHaveStyleRule('cursor', 'pointer', {
@@ -30,8 +30,8 @@ it('should render StyledButton with correct additional active styles', () => {
 it('should render StyledButton with correct additional disabled styles', () => {
   wrapper = shallow(<StyledButton theme={theme} isActive={false} />);
 
-  expect(wrapper).toHaveStyleRule('background', theme.colors.darkGray);
-  expect(wrapper).toHaveStyleRule('border', `2px solid ${theme.colors.slate}`);
+  expect(wrapper).toHaveStyleRule('background', theme.colors.buttonBackground);
+  expect(wrapper).toHaveStyleRule('border', `2px solid ${theme.colors.buttonBorder}`);
   expect(wrapper).toHaveStyleRule('pointer-events', 'none');
 });
 

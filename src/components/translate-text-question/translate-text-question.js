@@ -140,14 +140,11 @@ class TranslateTextQuestion extends Component {
 
     const resultBannerProps = {
       answerStatus,
-      // Undecided Banner Props
       buttonText,
       isActive: isTextAreaActive,
       onClickFunction: this.onClickButtonHandler(),
-      // Correct Result Banner Props
       correctTitle,
       correctText,
-      // Incorrect Result Banner Props
       incorrectTitle,
       incorrectText: incorrectText || correctAnswer,
     };

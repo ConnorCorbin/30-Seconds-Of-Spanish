@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export default styled.div`
+export default styled.img`
+  display: block;
   width: 100%;
 `;

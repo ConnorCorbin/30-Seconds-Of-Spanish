@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const getTextColor = ({ theme }) => theme.colors.slate;
+const getTextColor = ({ theme }) => theme.colors.text;
 
 export default styled.div`
   color: ${getTextColor};

@@ -16,42 +16,42 @@ describe('ChallengeHeader component', () => {
     />,
   );
 
-  it('should render ChallengeHeader component', () => {
+  it('should render component', () => {
     wrapper = getWrapper();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(false);
   });
 
-  it('should not render ChallengeHeader component', () => {
+  it('should not render component when no question title or text is passed in', () => {
     wrapper = getWrapper({ questionTitle: '', questionText: '' });
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toEqual(true);
   });
 
-  describe('StyledQuestionTitle', () => {
-    it('should render StyledQuestionTitle with correct question title', () => {
+  describe('Question title', () => {
+    it('should render correct question title', () => {
       wrapper = getWrapper();
 
       expect(wrapper.find(StyledQuestionTitle).children().text()).toEqual('Mark the correct meaning');
     });
 
-    it('should not render StyledQuestionTitle when no question text is passed in', () => {
+    it('should not render question title when no question title is passed in', () => {
       wrapper = getWrapper({ questionTitle: '' });
 
       expect(wrapper.find(StyledQuestionTitle).exists()).toEqual(false);
     });
   });
 
-  describe('StyledQuestionText', () => {
-    it('should render StyledQuestionText with correct question text', () => {
+  describe('Question text', () => {
+    it('should render correct question text', () => {
       wrapper = getWrapper();
 
       expect(wrapper.find(StyledQuestionText).children().text()).toEqual('One, Two, Three!');
     });
 
-    it('should not render StyledQuestionText when no question text is passed in', () => {
+    it('should not render question text when no question title is passed in', () => {
       wrapper = getWrapper({ questionText: '' });
 
       expect(wrapper.find(StyledQuestionText).exists()).toEqual(false);

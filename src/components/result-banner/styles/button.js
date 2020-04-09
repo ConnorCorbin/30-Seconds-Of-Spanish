@@ -2,25 +2,32 @@ import styled, { css } from 'styled-components';
 
 import media from 'common/services/dimensions-service';
 
-const getSlateColor = ({ theme }) => theme.colors.slate;
-const getDarkGrayColor = ({ theme }) => theme.colors.darkGray;
-const getLightGreenColor = ({ theme }) => theme.colors.lightGreen;
-const getMediumGreenColor = ({ theme }) => theme.colors.mediumGreen;
-const getDarkGreenColor = ({ theme }) => theme.colors.darkGreen;
+
+const getTextColor = ({ theme }) => theme.colors.text;
+
+const getButtonBackgroundColor = ({ theme }) => theme.colors.buttonBackground;
+
+const getButtonBorderColor = ({ theme }) => theme.colors.buttonBorder;
+
+const getActiveButtonBackgroundColor = ({ theme }) => theme.colors.activeButtonBackground;
+
+const getActiveButtonBorderColor = ({ theme }) => theme.colors.activeButtonBorder;
+
+const getActiveButtonHoverColor = ({ theme }) => theme.colors.activeButtonHover;
 
 const getActiveStyles = () => css`
-  background: ${getLightGreenColor};
-  border: 2px solid ${getDarkGreenColor};
+  background: ${getActiveButtonBackgroundColor};
+  border: 2px solid ${getActiveButtonBorderColor};
 
   :hover {
-    background: ${getMediumGreenColor};
+    background: ${getActiveButtonHoverColor};
     cursor: pointer;
   }
 `;
 
 const getDisabledStyles = () => css`
-  background: ${getDarkGrayColor};
-  border: 2px solid ${getSlateColor};
+  background: ${getButtonBackgroundColor};
+  border: 2px solid ${getButtonBorderColor};
   pointer-events: none;
 `;
 
@@ -32,7 +39,7 @@ const getAdditionalStyles = ({ isActive }) => (
 
 const baseStyles = css`
   border-radius: 16px;
-  color: ${getSlateColor};
+  color: ${getTextColor};
   font-size: 16px;
   height: 50px;
   width: 90%;

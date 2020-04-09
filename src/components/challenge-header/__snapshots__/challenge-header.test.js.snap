@@ -1,24 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChallengeHeader component should not render ChallengeHeader component 1`] = `""`;
+exports[`ChallengeHeader component should not render component when no question title or text is passed in 1`] = `""`;
 
-exports[`ChallengeHeader component should render ChallengeHeader component 1`] = `
+exports[`ChallengeHeader component should render component 1`] = `
 <ThemeProvider
   theme={
     Object {
       "colors": Object {
+        "activeButtonBackground": "#b8f28b",
+        "activeButtonBorder": "#78c800",
+        "activeButtonHover": "#84dc00",
+        "activeLabelBackground": "#ddf4ff",
+        "activeLabelBorder": "#1cb0f6",
+        "buttonBackground": "#e5e5e5",
+        "buttonBorder": "#323c41",
         "correctBannerBackground": "#b8f28b",
-        "darkBlue": "#1cb0f6",
-        "darkGray": "#e5e5e5",
-        "darkGreen": "#78c800",
+        "iconBackground": "#ffffff",
         "incorrectBannerBackground": "#ffc1c1",
-        "lightBlue": "#ddf4ff",
-        "lightGray": "#f7f7f7",
-        "lightGreen": "#b8f28b",
-        "mediumGreen": "#84dc00",
-        "slate": "#323c41",
+        "labelBackground": "#ffffff",
+        "labelBorder": "#e5e5e5",
+        "labelHover": "#f7f7f7",
+        "text": "#323c41",
+        "textAreaBackground": "#ffffff",
+        "textAreaBorder": "#e5e5e5",
         "undecidedBannerBackground": "#f5f5f5",
-        "white": "#ffffff",
       },
     }
   }

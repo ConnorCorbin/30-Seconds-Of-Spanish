@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import StyledWrapper from 'components/image/styles/wrapper';
+import StyledImage from 'components/image/styles/image';
 
-const getTextColor = ({ theme }) => theme.colors.slate;
+const getTextColor = ({ theme }) => theme.colors.text;
 
 const getPointerEvents = ({ isAnswerSubmitted }) => (
   isAnswerSubmitted
@@ -12,19 +13,19 @@ const getPointerEvents = ({ isAnswerSubmitted }) => (
 
 const getBackgroundColor = ({ theme, isLabelActive }) => (
   isLabelActive
-    ? theme.colors.lightBlue
-    : theme.colors.white
+    ? theme.colors.activeLabelBackground
+    : theme.colors.labelBackground
 );
 
 const getBorderColor = ({ theme, isLabelActive }) => (
   isLabelActive
-    ? theme.colors.darkBlue
-    : theme.colors.darkGray
+    ? theme.colors.activeLabelBorder
+    : theme.colors.labelBorder
 );
 
 const getHoverStyles = ({ theme, isLabelActive }) => !isLabelActive && `
   :hover {
-    background: ${theme.colors.lightGray};
+    background: ${theme.colors.labelHover};
     cursor: pointer;
   }
 `;
@@ -46,7 +47,7 @@ const getAdditionalImageLabelStyles = ({ isImageLabel }) => isImageLabel && `
     height: 100%;
     width: auto;
 
-    img {
+    ${StyledImage} {
       height: inherit;
       width: inherit;
     }

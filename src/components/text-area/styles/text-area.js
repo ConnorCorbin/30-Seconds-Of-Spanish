@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 
 import media from 'common/services/dimensions-service';
 
-const getTextColor = ({ theme }) => theme.colors.slate;
+const getTextColor = ({ theme }) => theme.colors.text;
 
-const getBackgroundColor = ({ theme }) => theme.colors.white;
+const getTextAreaBackgroundColor = ({ theme }) => theme.colors.textAreaBackground;
 
-const getBorderColor = ({ theme }) => theme.colors.darkGray;
+const textAreaBorderColor = ({ theme }) => theme.colors.textAreaBorder;
 
 const baseStyles = css`
-  background: ${getBackgroundColor};
-  border: 2px solid ${getBorderColor};
+  background: ${getTextAreaBackgroundColor};
+  border: 2px solid ${textAreaBorderColor};
   border-radius: 16px;
   box-sizing: border-box;
   color: ${getTextColor};

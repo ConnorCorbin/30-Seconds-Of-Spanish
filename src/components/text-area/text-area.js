@@ -25,33 +25,35 @@ const TextArea = ({
     return validateLanguage;
   };
 
-  const getPlaceholderText = () => {
-    const placeholderText = validatedLanguage() === languageMap.english
+  const getPlaceholderText = (statusOfLanguage) => {
+    const placeholderText = statusOfLanguage === languageMap.english
       ? 'Type in English'
       : 'Type in Spanish';
 
     return placeholderText;
   };
 
-  const getTextArea = () => (
+  const getTextArea = (statusOfLanguage) => (
     <StyledTextArea
       autoCorrect="off"
       spellCheck="false"
       autoCapitalize="none"
-      lang={validatedLanguage()}
+      lang={statusOfLanguage}
       dir="ltr"
       unselectable="on"
-      placeholder={getPlaceholderText()}
+      placeholder={getPlaceholderText(statusOfLanguage)}
       onChange={onChangeFunction}
       onKeyPress={onKeyPressFunction}
       disabled={isTextAreaDisabled}
     />
   );
 
+  const statusOfLanguage = validatedLanguage();
+
   return (
     <ThemeProvider theme={theme}>
       <StyledWrapper>
-        {getTextArea()}
+        {getTextArea(statusOfLanguage)}
       </StyledWrapper>
     </ThemeProvider>
   );
