@@ -25,7 +25,7 @@ describe('Header component', () => {
     wrapper = getWrapper({ iconName: '' });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.isEmptyRender()).toEqual(true);
+    expect(wrapper.html()).toEqual(null);
   });
 
   it('should render component with correct icon', () => {

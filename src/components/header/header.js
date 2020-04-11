@@ -7,17 +7,13 @@ import StyledIcon from 'components/header/styles/icon';
 
 const Header = ({
   iconName,
-}) => {
-  if (!iconName) return null;
-
-  return (
-    <StyledWrapper>
-      <StyledIcon>
-        <Icon name={iconName} />
-      </StyledIcon>
-    </StyledWrapper>
-  );
-};
+}) => iconName && (
+  <StyledWrapper>
+    <StyledIcon>
+      <Icon name={iconName} />
+    </StyledIcon>
+  </StyledWrapper>
+);
 
 Header.propTypes = {
   iconName: PropTypes.string,
