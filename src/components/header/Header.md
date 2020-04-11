@@ -2,7 +2,7 @@
 
 Header features:
 
-* Renders header with logo in the center
+* Renders header with icon in the center
 
 Consumed components:
 
