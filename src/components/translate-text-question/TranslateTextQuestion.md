@@ -1,9 +1,9 @@
 # Translate Text Question component
 
-Translate Text Question features:
+**Translate Text Question features:**
 
 * Renders Translate text question component
-* Question can be English to Spansish translation or Spanish to English translation
+* Question can be English to Spanish translation or Spanish to English translation
 
 Consumed components:
 

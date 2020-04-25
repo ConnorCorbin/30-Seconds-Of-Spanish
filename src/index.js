@@ -14,7 +14,7 @@ const componentName = urlParams.get('component');
 const GlobalStyle = createGlobalStyle`
   body, html {
     background: #fafafa;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     height: 100%;

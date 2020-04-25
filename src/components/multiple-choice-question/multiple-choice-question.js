@@ -14,17 +14,16 @@ import Label from 'components/label/label';
 const { correct, incorrect, undecided } = ANSWER_STATUS;
 
 class MultipleChoiceQuestion extends Component {
-  state = {
-    activeLabelIndex: 9999,
-    answerStatus: undecided,
-    isLabelActive: false,
-    isAnswerSubmitted: false,
-    shuffledPossibleAnswers: [],
-  };
-
-  componentDidMount = () => this.setState({
-    shuffledPossibleAnswers: shuffleArray(this.props.possibleAnswers),
-  });
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeLabelIndex: 9999,
+      answerStatus: undecided,
+      isLabelActive: false,
+      isAnswerSubmitted: false,
+      shuffledPossibleAnswers: shuffleArray(props.possibleAnswers),
+    };
+  }
 
   onClickLabelHandler = (index) => () => {
     const { activeLabelIndex, isAnswerSubmitted } = this.state;
@@ -84,7 +83,7 @@ class MultipleChoiceQuestion extends Component {
 
     const indexOfCorrectAnswer = shuffledPossibleAnswers.map(answer => answer.isCorrectAnswer).indexOf(true);
     const answerSelectedByUser = shuffledPossibleAnswers[indexOfCorrectAnswer];
-    const { text } = answerSelectedByUser || {};
+    const { text } = answerSelectedByUser;
 
     const resultBannerProps = {
       answerStatus,

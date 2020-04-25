@@ -16,10 +16,10 @@
     "visual:1020_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-1020_size.js",
     "visual:1400_size": "./node_modules/.bin/backstop test --config=backstop_data/backstop-1400_size.js",
     "visual": "npm-run-all -c visual:1400_size visual:1020_size visual:720_size visual:320_size",
-    "visual:1400_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-1400_size.js",
-    "visual:1020_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-1020_size.js",
-    "visual:720_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-720_size.js",
-    "visual:320_size:approve": "./node_modules/.bin/backstop approve --docker --config=backstop_data/backstop-320_size.js",
+    "visual:1400_size:approve": "./node_modules/.bin/backstop approve --config=backstop_data/backstop-1400_size.js",
+    "visual:1020_size:approve": "./node_modules/.bin/backstop approve --config=backstop_data/backstop-1020_size.js",
+    "visual:720_size:approve": "./node_modules/.bin/backstop approve --config=backstop_data/backstop-720_size.js",
+    "visual:320_size:approve": "./node_modules/.bin/backstop approve --config=backstop_data/backstop-320_size.js",
     "visual:approve": "npm-run-all -c visual:1400_size:approve visual:1020_size:approve visual:720_size:approve visual:320_size:approve"
   },
   "husky": {
