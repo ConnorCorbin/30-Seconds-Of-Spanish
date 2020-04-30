@@ -67,12 +67,12 @@ class TranslateTextQuestion extends Component {
       }
     });
 
-    const FractionPercentage = (
+    const fractionPercentage = (
       (matchingBigrams * bigramLength) / ((string1Length + string2Length
         - ((bigramLength - indexAdjuster) * bigramLength)))
     );
 
-    return FractionPercentage;
+    return fractionPercentage;
   };
 
   onKeyPressHandler = () => (event) => {
