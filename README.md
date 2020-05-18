@@ -155,7 +155,15 @@ The current folder structure will look like the following:
   npm run visual:approve
   ```
 
-5. Finally, it is time to build the react web extension. This is done by running the following command:
+5. Next, the test and linting scripts must be ran.
+
+  ```javascript
+  npm run test && npm run lint
+  ```
+
+  You can now find generated build in the `/build` folder.
+
+6. Finally, it is time to build the react web extension. This is done by running the following command:
 
   ```javascript
   npm run build

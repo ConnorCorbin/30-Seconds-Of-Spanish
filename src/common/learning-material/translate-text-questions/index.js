@@ -14,8 +14,8 @@ export default () => {
 
   return questions.map(({ questionText, correctAnswer, isEnglishQuestion }) => {
     const languageSpecificProps = isEnglishQuestion
-      ? englishProps
-      : spanishProps;
+      ? spanishProps
+      : englishProps;
 
     return (
       <TranslateTextQuestion
